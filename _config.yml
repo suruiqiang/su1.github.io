@@ -3,7 +3,7 @@ title: 极客飞
 subtitle: 极客飞的博客
 email: 759775013@qq.com
 description: 纯熟玩乐,博君一笑 
-baseurl: ""                    # the subpath of your site, e.g. /blog
+baseurl: "/"                    # the subpath of your site, e.g. /blog
 url: "https://fei.github.io"   # the base hostname & protocol for your site
 author: fei
 street_address: "" 
