@@ -1,73 +1,43 @@
-# Forty - Jekyll Theme
+# jekyll-rtd-theme
+[![](https://github.com/rundocs/jekyll-rtd-theme/workflows/CI/badge.svg)][repository]
+[![](https://img.shields.io/gem/v/jekyll-rtd-theme)][rubygem]
+[![](https://img.shields.io/gem/dt/jekyll-rtd-theme)][rubygem]
+[![](https://data.jsdelivr.com/v1/package/gh/rundocs/jekyll-rtd-theme/badge)][cdn]
+[![](https://www.codefactor.io/repository/github/rundocs/jekyll-rtd-theme/badge)][codefactor]
+[![](https://img.shields.io/badge/featured%20on-JekyllThemes-red.svg)](https://jekyll-themes.com)
+[![](https://badges.gitter.im/rundocs/jekyll-rtd-theme.svg)][gitter]
 
-A Jekyll version of the "Forty" theme by [HTML5 UP](https://html5up.net/).  
+GitHub-flavored docs theme for Jekyll, based on sphinx_rtd_theme
 
-![Forty Theme](assets/images/forty.jpg "Forty Theme")
+<img class="shadow-box" width="50%" alt="jekyll-rtd-theme" src="https://user-images.githubusercontent.com/68011645/89026666-ad3a8680-d35b-11ea-9f4b-d3fe26ae12ed.png">
 
-# How to Use
-
-For those unfamiliar with how Jekyll works, check out [jekyllrb.com](https://jekyllrb.com/) for all the details, 
-or read up on just the basics of [front matter](https://jekyllrb.com/docs/frontmatter/), [writing posts](https://jekyllrb.com/docs/posts/), 
-and [creating pages](https://jekyllrb.com/docs/pages/).
-
-- **GitLab**: Simply fork this repository and start editing the `_config.yml` file!  
-- **GitHub**: Fork this repository and create a branch named `gh-pages`, then start editing the `_config.yml` file.
-
-# Added Features
-
-* **[Formspree.io](https://formspree.io/) contact form integration** - just add your email to the `_config.yml` and it works!
-* Use `_config.yml` to **set whether the homepage tiles should pull pages or posts**, as well as how many to display.
-* Add your **social profiles** easily in `_config.yml`. Only social profiles buttons you enter in `config.yml` show up on the site footer!
-* Set **featured images** in front matter.
-
-# Issues
-
-If you would like to report a bug, ask a question, request a feature, feel free to do so on [the GitLab repository](https://gitlab.com/andrewbanchich/forty-jekyll-theme) and I will be more than happy to help!
-
-Alternatively, you can open an issue via email by emailing [incoming+andrewbanchich/forty-jekyll-theme@incoming.gitlab.com](mailto:incoming+andrewbanchich/forty-jekyll-theme@incoming.gitlab.com).
-
-The GitHub repository is simply a mirror of the GitLab repository.
-
-# Credits
-
-Original README from HTML5 UP:
-
+## Quick start
+```yml
+remote_theme: rundocs/jekyll-rtd-theme
 ```
-Forty by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+You can [generate](https://github.com/rundocs/starter-slim/generate) with the same files and folders from [rundocs/starter-slim](https://github.com/rundocs/starter-slim/)
 
+## Features
+- Automatically generate nested sidebar based on directory
+- Multi-language supported
+- Search engine optimized
+- Document search (RegExp supported)
+- Support third-party comments
+- Google, Baidu, CNZZ Analytics supported
+- Just need one file `_config.yml` to configure site
 
-This is Forty, my latest and greatest addition to HTML5 UP and, per its incredibly
-creative name, my 40th (woohoo)! It's built around a grid of "image tiles" that are
-set up to smoothly transition to secondary landing pages (for which a separate page
-template is provided), and includes a number of neat effects (check out the menu!),
-extra features, and all the usual stuff you'd expect. Hope you dig it!
+## Documents
+For full documentation, please refer to our website ([rundocs.io](https://rundocs.io/)) for details
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+### test
+- Latest test document: [rundocs.github.io/jekyll-rtd-theme](https://rundocs.github.io/jekyll-rtd-theme)
+- Preview debug branch, please refer to [rundocs.github.io/debug](https://rundocs.github.io/debug)
 
-(* = not included)
+## The license
+The theme is available as open source under the terms of the MIT License
 
-AJ
-aj@lkn.io | @ajlkn
-
-
-Credits:
-
-	Demo Images:
-		Unsplash (unsplash.com)
-
-	Icons:
-		Font Awesome (fortawesome.github.com/Font-Awesome)
-
-	Other:
-		jQuery (jquery.com)
-		html5shiv.js (@afarkas @jdalton @jon_neal @rem)
-		background-size polyfill (github.com/louisremi)
-		Misc. Sass functions (@HugoGiraudel)
-		Respond.js (j.mp/respondjs)
-		Skel (skel.io)
-```
-
-Repository [Jekyll logo](https://github.com/jekyll/brand) icon licensed under a [Creative Commons Attribution 4.0 International License](http://choosealicense.com/licenses/cc-by-4.0/).
+[repository]: https://github.com/rundocs/jekyll-rtd-theme
+[rubygem]: https://rubygems.org/gems/jekyll-rtd-theme
+[cdn]: https://cdn.jsdelivr.net/gh/rundocs/jekyll-rtd-theme/
+[codefactor]: https://www.codefactor.io/repository/github/rundocs/jekyll-rtd-theme
+[gitter]: https://gitter.im/rundocs/jekyll-rtd-theme?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
