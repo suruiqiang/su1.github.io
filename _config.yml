@@ -1,7 +1,7 @@
 name: Fei Themes
-url: https://github.com/ayee1616166/fei.github.io
+url: http://ayee1616166.github.io
 description: Insert tagline here
-github_repo: "https://github.com/ayee1616166/fei.github.io.git" # 用你的ID替换name
+github_repo: "https://github.com/ayee1616166/ayee1616166.github.io.git" # 用你的ID替换name
 
 permalink: /themes/:title/
 
