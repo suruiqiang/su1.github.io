@@ -1,36 +1,41 @@
-# site settings
-title: 极客飞
-subtitle: 极客飞的博客
-email: 759775013@qq.com
-description: 纯熟玩乐,博君一笑 
-baseurl: "/fei.github.io"                    # the subpath of your site, e.g. /blog
-url: "https://fei.github.io"   # the base hostname & protocol for your site
-author: fei
-street_address: "" 
-city: ""
-state: ""
-zip_code: ""
-country: ""
-phone: ""
+title: fei blog
+lang: zh
+description: GitHub-flavored docs theme for Jekyll
 
-# homepage tiles
-tiles-source: pages # accepts "posts" or "pages"
-tiles-count: 6
+theme: null
 
-# social settings
-500px_url:
-facebook_url:
-github_url: https://github.com/ayee1616166/fei.github.io
-gitlab_url: ""
-googleplus_url: ""
-instagram_url: ""
-linkedin_url: ""
-pinterest_url:
-slack_url:
-twitter_url: ""
+nav_version: true
+edit: true
+addons_branch: true
 
-# build settings
-markdown: kramdown
+addons:
+  - github
+  - i18n
+  - plugins
+  - analytics
+
+copyright:
+  revision: true
+
+readme_index:
+  with_frontmatter: true
 
 sass:
   style: compressed
+
+plugins:
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
+
+exclude:
+  - Makefile
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - requirements.txt
+  - node_modules
+  - package.json
+  - package-lock.json
+  - jekyll-rtd-theme.gemspec
