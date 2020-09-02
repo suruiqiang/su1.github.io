@@ -1,41 +1,17 @@
-title: fei blog
-lang: zh
-description: GitHub-flavored docs theme for Jekyll
+name: Fei Themes
+url: http://ayee1616166.github.io
+description: Insert tagline here
+github_repo: "https://github.com/ayee1616166/ayee1616166.github.io.git" # 用你的ID替换name
 
-theme: null
+permalink: /themes/:title/
 
-nav_version: true
-edit: true
-addons_branch: true
+plugins: [jekyll-paginate]
 
-addons:
-  - github
-  - i18n
-  - plugins
-  - analytics
+highlighter: pygments
+paginate: 20
 
-copyright:
-  revision: true
+markdown: rdiscount
+rdiscount:
+    extensions: ['smart']
 
-readme_index:
-  with_frontmatter: true
-
-sass:
-  style: compressed
-
-plugins:
-  - jemoji
-  - jekyll-avatar
-  - jekyll-mentions
-
-exclude:
-  - Makefile
-  - CNAME
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - requirements.txt
-  - node_modules
-  - package.json
-  - package-lock.json
-  - jekyll-rtd-theme.gemspec
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile', 'vendor']
