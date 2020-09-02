@@ -4,10 +4,10 @@
 baseurl:
 url: https://ayee1616166.github.io
 date_format: "ordinal"
-title: 一个小鸟飞啊飞
-subtitle: "公众号：没有没有没有"
-description: "一个postgresql爱好者的装逼利器"
-keywords: postgresql,greenplum,hawq
+title: 札记
+subtitle: "围在城里的人想逃出来，城外的人想冲进去，对婚姻也罢，职业也罢，人生的愿望大都如此"
+description: 
+keywords: linux,postgresql,greenplum,hawq
 timezone: Asia/Shanghai
 encoding: "utf-8"
 side_bar_repo_limit: 5
@@ -38,10 +38,10 @@ highlight_theme: github
 # ---------------- #
 #      Author      #
 # ---------------- #
-author: 
+author: fei 
 organization: 
 organization_url: 
-github_username:  
+github_username: fei  
 location: zhouHang, China
 email: 759775013@qq.com
 
