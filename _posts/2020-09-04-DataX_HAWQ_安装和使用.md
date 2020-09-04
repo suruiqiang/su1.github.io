@@ -23,6 +23,16 @@ compiled by GCC gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39)
 compiled on Mar 28 2020 17:33:50
 ```
 
+# 列出GpdbWriter针对PostgreSQL类型转换列表
+| DataX 内部类型| PostgreSQL 数据类型    |
+|-|-|
+| Long     |bigint, bigserial, integer, smallint, serial |
+| Double   |double precision, money, numeric, real |
+| String   |varchar, char, text, bit|
+| Date     |date, time, timestamp |
+| Boolean  |bool|
+| Bytes    |bytea|
+
 # 安装dataX
 ```shell
 mkdir -p /home/gpadmin/dataX/
