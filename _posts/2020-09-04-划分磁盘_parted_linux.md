@@ -5,6 +5,7 @@ categories: Linux
 description: 划分磁盘_parted_linux
 keywords: part,Linux
 ---
+[TOC]
 
 # parted选项说明
 ```shell
