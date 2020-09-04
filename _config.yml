@@ -10,7 +10,7 @@ description:
 keywords: linux,postgresql,greenplum,hawq
 timezone: Asia/Shanghai
 encoding: "utf-8"
-side_bar_repo_limit: 2
+side_bar_repo_limit: 5
 repository: ayee1616166/ayee1616166.github.io
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
@@ -24,7 +24,7 @@ components:
     # 不蒜子访问统计
     busuanzi:
         enabled: true
-        start_date: 2020-05-03
+        start_date: 2015-01-01
 # 压缩页面内容
 compress_html:
   clippings: all
@@ -111,6 +111,8 @@ collections:
 # ---------------- #
 #      Comments    #
 # ---------------- #
+
+lazy_load_disqus : false
 
 # ---------------- #
 #      Search      #
