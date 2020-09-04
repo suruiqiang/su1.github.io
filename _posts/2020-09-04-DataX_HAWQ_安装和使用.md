@@ -43,7 +43,7 @@ mv datax-v1.0.4-hashdata /opt/
 create table s(id int,name text);INSERT INTO S select generate_series(1,1000),'您好qwer!@#$%^&*()';
 create table d(id int,name text);
 
-## 如果是HAWQ请在DB中执行下列函数，如果是greenplum或hashdata请跳过该步骤
+--## 如果是HAWQ请在DB中执行下列函数，如果是greenplum或hashdata请跳过该步骤
 CREATE FUNCTION gp_truncate_error_log(name text,out res int) AS $$ SELECT 0 $$ LANGUAGE SQL;
 ```
 
