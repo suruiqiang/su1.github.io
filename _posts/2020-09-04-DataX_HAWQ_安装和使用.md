@@ -129,3 +129,5 @@ python datax.py pg2hawq.json
 | Date     |date, time, timestamp |
 | Boolean  |bool|
 | Bytes    |bytea|
+
+# 

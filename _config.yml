@@ -112,8 +112,6 @@ collections:
 #      Comments    #
 # ---------------- #
 
-lazy_load_disqus : false
-
 # ---------------- #
 #      Search      #
 # ---------------- #
