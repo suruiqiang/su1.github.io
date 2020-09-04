@@ -1,18 +1,18 @@
 - name: 鸟哥的Linux私房菜
   url: http://cn.linux.vbird.org/linux_basic/linux_basic.php
-  src: Linux
+  src: life
 
 - name: postgresql.org
   url: https://www.postgresql.org/
-  src: PostgreSQL
+  src: life
 
 - name: PostgreSQL中文文档
   url: http://www.postgres.cn/index.php/v2/home 
-  src: PostgreSQL
+  src: life
 
 - name: Greenplum数据库文档
   url: https://gp-docs-cn.github.io/docs/
-  src: PostgreSQL
+  src: life
 
 - name: 码志-博客模版的作者
   url: http://mazhuang.org
