@@ -6,8 +6,6 @@ description: 划分磁盘_parted_linux
 keywords: part,Linux
 ---
 
-[toc]
-
 # parted选项说明
 ```
 检查 

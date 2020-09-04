@@ -6,11 +6,8 @@ description: upgrade_gcc_centos6.8
 keywords: gcc,Linux
 ---
 
-[toc]
 # 参考
-```
-https://www.cnblogs.com/succeed/p/6204438.html
-```
+[源码安装GCC-4.9.2](https://www.cnblogs.com/succeed/p/6204438.html)
 
 # 查看原始gcc版本
 ```
