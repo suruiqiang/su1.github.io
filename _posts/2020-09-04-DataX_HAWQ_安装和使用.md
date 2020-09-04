@@ -39,7 +39,7 @@ cd /home/gpadmin/dataX/DataX-1.0.4/target/
 mv datax-v1.0.4-hashdata /opt/
 ```
 # DB中表准备
-```shell
+```sql
 create table s(id int,name text);INSERT INTO S select generate_series(1,1000),'您好qwer!@#$%^&*()';
 create table d(id int,name text);
 
@@ -54,7 +54,7 @@ cd /opt/datax-v1.0.4-hashdata/datax/bin/
 
 # 生成postgresql to hawq 的导数模版
 ## 对应参数说明文档
-[postgresqlreader](https://github.com/alibaba/DataX/blob/master/postgresqlreader/doc/postgresqlreader.md)
+[postgresqlreader](https://github.com/alibaba/DataX/blob/master/postgresqlreader/doc/postgresqlreader.md) <br />
 [gpdbwriter](https://github.com/HashDataInc/DataX/blob/master/gpdbwriter/doc/gpdbwriter.md)
 ```python
 
