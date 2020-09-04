@@ -1,27 +1,16 @@
 - sitename: GitHub
-  name: mzlogin
-  url: https://github.com/mzlogin
+  name: ayee1616166
+  url: https://ayee1616166.github.io
 
-- sitename: 掘金
-  name: mzlogin
-  url: http://gold.xitu.io/user/570ddaeb2e958a005c63b2da
+- sitename: segmentfault
+  name: xiao_mini
+  url: https://segmentfault.com/u/xiao_mini/articles
 
-- sitename: LinkedIn
-  name: mazhuang
-  url: https://www.linkedin.com/in/mazhuang
+- sitename: CSDN
+  name: xiao_mini
+  url: https://blog.csdn.net/qq_23490833
 
-- sitename: 博客
-  name: 码志
-  url: http://mazhuang.org
+- sitename: PostgreSQL中文技术 
+  name: 叶
+  url: http://www.pgsql.tech/article_101_10000059
 
-- sitename: 微博
-  name: mzlogin
-  url: http://weibo.com/mzlogin
-
-- sitename: 知乎
-  name: mzlogin
-  url: http://www.zhihu.com/people/mzlogin
-
-- sitename: 豆瓣
-  name: 壮哥不胖
-  url: http://www.douban.com/people/freedim
