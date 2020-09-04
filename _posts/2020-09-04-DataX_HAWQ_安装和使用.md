@@ -121,8 +121,8 @@ python datax.py pg2hawq.json
 
 
 # 列出GpdbWriter针对PostgreSQL类型转换列表
-| DataX 内部类型| PostgreSQL 数据类型    |
-|---------------|------------------------|
+| DataX 内部类型  | PostgreSQL 数据类型      |
+| --------------- | ------------------------ |
 | Long     |bigint bigserial integer smallint serial |
 | Double   |double precision money numeric real |
 | String   |varchar char text bit|
