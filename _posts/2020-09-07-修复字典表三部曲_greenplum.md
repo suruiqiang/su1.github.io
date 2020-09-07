@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 修复字典表三部曲\_greenplum
+title: 修复GPDB字典表三部曲
 categories: GPDB
-description:  修复字典表三部曲\_greenplum
+description: 修复GPDB字典表三部曲 
 keywords: GPDB,GreenPlum
 ---
 
