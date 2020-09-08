@@ -121,7 +121,7 @@ Large Objects
 
 # 部分指令测试：
 
-##【命令: \copyright】
+## 命令: \copyright 
 
 ### 功能介绍: 显示 PostgreSQL 的版权和版本信息
 ```sql
@@ -154,7 +154,7 @@ PARTICULAR PURPOSE.THE SOFTWARE PROVIDED HEREUNDER IS ON AN "AS IS" BASIS,
 AND THE UNIVERSITY OF CALIFORNIA HAS NO OBLIGATIONS TO PROVIDE MAINTENANCE,
 SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
 ```
-##【命令: \g 】
+## 命令: \g  
 
 ### 功能介绍: 执行查询（并将结果发送到文件或管道）
 #### 文件模式:
@@ -192,7 +192,7 @@ select 'select 1234567890';
 ?column? ------------------- select 1234567890 (1 row)
 ```
 
-##【命令: \h 】
+## 命令: \h  
 
 ### 功能介绍: 帮助SQL命令的语法，*用于所有命令
 
@@ -216,7 +216,7 @@ CREATE [[GLOBAL | LOCAL] {TEMPORARY | TEMP}] TABLE table_name (
 [ ENCODING ( storage_directive [,...] ) ]
 ......
 ```
-##【命令: \q】
+## 命令: \q 
 
 ### 功能介绍: 退出psql
 ```sql
@@ -233,7 +233,7 @@ Type "help" for help.
 testdb=#
 ```
  
-##【命令: \p】
+## 命令: \p 
 
 ### 功能介绍: 显示查询缓冲区的内容
 ```sql
@@ -253,7 +253,7 @@ testdb=# \p
 select 9;
 testdb=#
 ``` 
-##【命令: \e】
+## 命令: \e 
 
 ### 功能介绍: 使用外部编辑器编辑查询缓冲区（或文件）
 #### 查询缓冲区模式：
@@ -301,7 +301,7 @@ select 7;
 testdb=# 
 ```
 
-##【命令: \ef】
+## 命令: \ef 
 
 ### 功能介绍: 使用外部编辑器编辑函数定义
 #### postgres 8.3环境测试   
@@ -341,7 +341,7 @@ Description         |
 postgres=# 
 ```
 
-##【命令: \r】
+## 命令: \r 
 
 ### 功能介绍: 重置（清除）查询缓冲区绍:
 ```sql
@@ -355,7 +355,7 @@ Query buffer is empty.
 testdb=# 
 ```
 
-##【命令: \s】
+## 命令: \s 
 
 ### 功能介绍: 显示历史记录或将其保存到文件
 ```sql
@@ -382,7 +382,7 @@ Wrote history to file "./history_records.sql".
 testdb=#
 ```
  
-##【命令: \w】
+## 命令: \w 
 
 ### 功能介绍: 将查询缓冲区写入文件
 ```sql
@@ -393,7 +393,7 @@ testdb=# \! cat buffer_save.sql
 select 'heelo';
 testdb=# 
 ```
-##【命令: \copy】
+## 命令: \copy 
 
 ### 功能介绍: 执行copy SQL将数据流发送到客户端主机
 ```sql
@@ -420,7 +420,7 @@ testdb=# select count(*) from t;
 testdb=#
 ```
 
-##【命令: \echo [STRING] 】
+## 命令: \echo [STRING]  
 
 ### 功能介绍: 将字符串标准输出
 ```sql
@@ -436,7 +436,7 @@ hello world
 testdb=#
 ``` 
 
-##【命令: \i FILE 】
+## 命令: \i FILE  
 
 ### 功能介绍: 执行文件中的命令
 ```sql
@@ -455,7 +455,7 @@ testdb=# \i test.sql
 
 testdb=#
 ``` 
-##【命令: \o [FILE] 】
+## 命令: \o [FILE]  
 
 ### 功能介绍: 发送所有的查询结果到文件或管道
 
@@ -507,7 +507,7 @@ select 'select 1234567890';
 >$ psql -f o.sql 
 ?column? ------------------- select 1234567890 (1 row)
 ```
-##【命令: \qecho [STRING] 】
+## 命令: \qecho [STRING]  
 
 ### 功能介绍: 写入字符串以查询输出流
 ```sql
@@ -517,7 +517,7 @@ testdb=# \q
 [gpadmin@test cmd]$ cat t.data 
 123456
 ```
-##【命令: \d[S+] 】
+## 命令: \d[S+]  
 
 ### 功能介绍: 列出表、视图和序列.
 ```sql
@@ -529,7 +529,7 @@ teb=# \dS+
  pg_catalog | gp_configuration_history        | table    | gpadmin | heap    | 
 ......
 ```
-##【命令: \d[S+] NAME 】
+## 命令: \d[S+] NAME  
 
 ### 功能介绍: 描述表、视图、序列或索引
 ```sql
@@ -557,7 +557,7 @@ Distributed by: (id)
 
 testdb=#
 ``` 
-##【命令: \da[S] [PATTERN] 】
+## 命令: \da[S] [PATTERN]  
 
 ### 功能介绍: 列出聚合函数
 ```sql
@@ -577,7 +577,7 @@ testdb=# \daS corr
  pg_catalog | corr | double precision | double precision, double precision | 
 (1 row)
 ```
-##【命令: \db[+] [PATTERN] 】
+## 命令: \db[+] [PATTERN]  
 
 ### 功能介绍: 列出表空间
 ```sql
@@ -589,7 +589,7 @@ testdb=# \db+
  pg_global  | gpadmin | pg_system      |                   | 
 (2 rows)
 ```
-##【命令: \dc[S] [PATTERN] 】
+## 命令: \dc[S] [PATTERN]  
 
 ### 功能介绍: 列出字符集转换函数
 ```sql
@@ -608,7 +608,7 @@ testdb=# \dcS+ windows_866_to_windows_1251
  pg_catalog | windows_866_to_windows_1251 | WIN866 | WIN1251     | yes
 (1 row)
 ```
-##【命令: \dC [PATTERN] 】
+## 命令: \dC [PATTERN]  
 
 ### 功能介绍: 列出类型转换函数
 ```sql
@@ -633,7 +633,7 @@ testdb=# \dC bit
  integer     | bit         | bit                | no
 (7 rows)
 ```
-##【命令: \dd[S] [PATTERN] 】
+## 命令: \dd[S] [PATTERN]  
 
 ### 功能介绍: 显示对象的注释
 ```sql
@@ -645,7 +645,7 @@ testdb=# \ddS+ com
 (1 row)
 ```
 
-##【命令: \ddp [PATTERN] 】
+## 命令: \ddp [PATTERN]  
 
 ### 功能介绍: 列出默认权限
 #### PostgreSQL 8.3.23 (Greenplum Database 5.0.0 build dev) on x86_64-pc-linux-gnu环境测试
@@ -679,14 +679,14 @@ postgres=> \dp t
         |      |       | d_b=r/d_a         |                   | 
 (1 row)
 ```
-##【命令: \dD[S] [PATTERN] 】
+## 命令: \dD[S] [PATTERN]  
 
 ### 功能介绍: 显示所有共同值域
 ```sql
 --未测试通过
 ```
 
-##【命令: \des[+] [PATTERN] 】 list foreign servers
+## 命令: \des[+] [PATTERN]   list foreign servers
 
 ### 功能介绍: 显示外部服务
 ```sql
@@ -694,20 +694,20 @@ postgres=> \dp t
 参考: https://yq.aliyun.com/articles/3074
 ```
 
-##【命令: \deu[+] [PATTERN] 】
+## 命令: \deu[+] [PATTERN]  
 ### 功能介绍: 显示用户映射
 ```sql
 --未测试通过
 参考: https://yq.aliyun.com/articles/3074
 ```
-##【命令: \dew[+] [PATTERN] 】
+## 命令: \dew[+] [PATTERN]  
 
 ### 功能介绍: 显示外部数据包装器
 ```sql
 --未测试通过 https://yq.aliyun.com/articles/3074
 ```
 
-##【命令: \df[antw][S+] [PATRN] 】
+## 命令: \df[antw][S+] [PATRN]  
 
 ### 功能介绍: 列表[聚合函数/正常的/触发器/窗口]函数
 ```sql
@@ -740,7 +740,7 @@ Description         |
 
 test=#
 ``` 
-##【命令: \dF[+] [PATTERN] 】
+## 命令: \dF[+] [PATTERN]  
 
 ### 功能介绍: 显示文本搜索配置
 ```sql
@@ -749,7 +749,7 @@ The server (version 8.2) does not support full text search.
 test=#
 ```
  
-##【命令: \dFd[+] [PATTERN] 】 
+## 命令: \dFd[+] [PATTERN]   
 ### 功能介绍: 显示文本搜索字典
 ```sql
 test=# \dFd+
@@ -757,7 +757,7 @@ The server (version 8.2) does not support full text search.
 test=#
 ```
  
-##【命令: \dFp[+] [PATTERN] 】
+## 命令: \dFp[+] [PATTERN]  
 
 ### 功能介绍: 显示文本搜索解析器
 ```sql
@@ -765,7 +765,7 @@ test=# \dFp+ The server (version 8.2) does not support full text search.
 test=#
 ```
 
-##【命令: \dFt[+] [PATTERN] 】
+## 命令: \dFt[+] [PATTERN]  
 
 ### 功能介绍: 显示文本搜索模板
 ```sql
@@ -773,7 +773,7 @@ test=# \dFt+ The server (version 8.2) does not support full text search.
 test=#
 ```
 
-##【命令: \dg[+] [PATTERN] 】
+## 命令: \dg[+] [PATTERN]  
 
 ### 功能介绍: 显示用户角色(用户组 )
 ```sql
@@ -788,7 +788,7 @@ test=# \dg+
  rightnow   |                                   |              | 
  test_user  |                                   | {group_user} | 
 ```
-##【命令: \di[S+] [PATTERN] 】
+## 命令: \di[S+] [PATTERN]  
 
 ### 功能介绍: 显示索引
 ```sql
@@ -808,7 +808,7 @@ test=# \di+ idx_y_id
 
 test=#
 ``` 
-##【命令: \dl 】
+## 命令: \dl  
 
 ### 功能介绍: 列出大对象，与\lo_list]相同
 ```sql
@@ -816,7 +816,7 @@ test=#
 参考: https://blog.csdn.net/zutsoft/article/details/78847559
 ```
 
-##【命令: \dn[+] [PATTERN] 】
+## 命令: \dn[+] [PATTERN]  
 
 ### 功能介绍: 显示schema
 ```
@@ -856,7 +856,7 @@ test=# \dn+
 test=#
 ```
  
-##【命令: \do[S] [PATTERN] 】
+## 命令: \do[S] [PATTERN]  
 
 ### 功能介绍: 显示操作符
 ```sql
@@ -893,7 +893,7 @@ test=# \do !*
 test=#
 ```
  
-##【命令: \dp [PATTERN] 】
+## 命令: \dp [PATTERN]  
 
 ### 功能介绍: 显示表、视图和顺序访问权限
 ```sql
@@ -912,13 +912,13 @@ test=# \dp
 
 test=#
 ``` 
-##【命令: \dr[S+] [PATTERN] 】
+## 命令: \dr[S+] [PATTERN]  
 
 ### 功能介绍: 显示外部表
 ```sql
 --未测试通过
 ```
-##【命令: \drds [PATRN1 [PATRN2]] 】
+## 命令: \drds [PATRN1 [PATRN2]]  
 
 ### 功能介绍: 列出每个数据库角色设置
 ```sql
@@ -927,7 +927,7 @@ No per-database role settings support in this server version.
 test=#
 ```
  
-##【命令: \ds[S+] [PATTERN] 】
+## 命令: \ds[S+] [PATTERN]  
 
 ### 功能介绍: 显示序列
 ```sql
@@ -950,7 +950,7 @@ test=# \ds+ seq_test
 test=# 
 ```
 
-##【命令: \dt[S+] [PATTERN] 】
+## 命令: \dt[S+] [PATTERN]  
 
 ###功能介绍: 显示表
 ```sql
@@ -972,7 +972,7 @@ mydatabase=# \dtS+ cities
 
 mydatabase=# 
 ```
-##【命令: \dT[S+] [PATTERN] 】
+## 命令: \dT[S+] [PATTERN]  
 
 ### 功能介绍: 显示数据类型
 ```
@@ -1004,7 +1004,7 @@ mydatabase=# \dTS+ bytea
 mydatabase=#
 ```
 
-##【命令: \du[+] [PATTERN] 】
+## 命令: \du[+] [PATTERN]  
 
 ### 功能介绍: 显示角色(用户)
 ```sql
@@ -1023,7 +1023,7 @@ mydatabase=# \du+
 
 mydatabase=#
 ``` 
-##【命令: \dv[S+] [PATTERN]】
+## 命令: \dv[S+] [PATTERN] 
 
 ### 功能介绍: 显示视图
 ```
@@ -1048,7 +1048,7 @@ mydatabase=# \dvS+
  pg_catalog | pg_available_extension_versions | view | gpadmin | none    | 
  pg_catalog | pg_available_extensions         | view | gpadmin | none    | 
 ```
-##【命令: \dE [PATTERN]】
+## 命令: \dE [PATTERN] 
 
 ### 功能介绍: 显示外部表
 ```sql
@@ -1073,7 +1073,7 @@ External options: {}
 Command: sh /home/gpadmin/20160907/get_data.sh
 Execute on: host 'sdw01'
 ```
-##【命令: \l[+] 】
+## 命令: \l[+]  
 
 ### 功能介绍: 显示所有数据库
 ```
@@ -1107,7 +1107,7 @@ testdb=# \l+
  testdb     | gpadmin | UTF8     |                     | 27 MB | pg_default | 
 (6 rows)
 ```
-##【命令: \a 】
+## 命令: \a  
 
 ### 功能介绍: 在未对齐和对齐的输出模式之间切换
 ```sql
@@ -1150,7 +1150,7 @@ mydatabase=#  SELECT p1.name,p2.name,
  East London,SA  | London, Ontario |   13892208.6782928
 (3 rows)
 ```
-##【命令: \C [STRING] 】
+## 命令: \C [STRING]  
 
 ### 功能介绍: 设置表标题，如果没有则取消设置
 ```sql
@@ -1173,7 +1173,7 @@ mydatabase=# select 1,2,3,4,5,6;
 
 mydatabase=#
 ``` 
-##【命令: \f [STRING] 】 （GPDB中验证失败）
+## 命令: \f [STRING]   （GPDB中验证失败）
 
 ### 功能介绍: 为未对齐的查询输出显示或设置字段分隔符
 ```sql
@@ -1188,7 +1188,7 @@ mydatabase=# select * from test ;
 
 mydatabase=# 
 ```
-##【命令: \H 】
+## 命令: \H  
 
 ### 功能介绍: 切换HTML输出模式
 ```sql
@@ -1223,7 +1223,7 @@ mydatabase=# select * from test ;
 mydatabase=#
 ```
  
-##【命令: \pset NAME [VALUE] 】
+## 命令: \pset NAME [VALUE]  
 
 ### 功能介绍: 这条命令设置影响查询结果表输出的选项(详细请参考postgres手册)
 ```sql
@@ -1266,7 +1266,7 @@ Border style is 9.
 mydatabase=# \pset border
 Border style is 9.
 ```
-##【命令: \t [on|off] 】
+## 命令: \t [on|off]  
 
 ### 功能介绍: 仅显示行
 ```sql
@@ -1288,7 +1288,7 @@ mydatabase=# select * from test ;
 
 mydatabase=#
 ``` 
-##【命令: \T [STRING] 】
+## 命令: \T [STRING]  
 
 ### 功能介绍: 允许你在使用 HTML 输出模式时声明放在 table 标记里的属性utes, or unset if none
 ```
@@ -1333,7 +1333,7 @@ mydatabase=# select * from test ;
 </p>
 mydatabase=#
 ``` 
-##【命令: \x [on|off] 】
+## 命令: \x [on|off]  
 
 ### 功能介绍: 切换扩展输出
 ```sql
@@ -1356,7 +1356,7 @@ b | 2
 
 mydatabase=#
 ``` 
-##【命令: \c[onnect] [DBNAME|- USER|- HOST|- PORT|-] 】
+## 命令: \c[onnect] [DBNAME|- USER|- HOST|- PORT|-]  
 
 ### 功能介绍: 连接到新的数据库
 ```sql
@@ -1368,7 +1368,7 @@ testdb=# \c
 You are now connected to database "testdb" as user "gpadmin".
 testdb=#
 ``` 
-##【命令: \encoding [ENCODING] 】
+## 命令: \encoding [ENCODING]  
 
 ### 功能介绍: 显示或设置客户端字符集
 ```sql
@@ -1379,7 +1379,7 @@ mydatabase=# \encoding
 GB18030
 mydatabase=#
 ``` 
-##【命令: \password [USERNAME] 】
+## 命令: \password [USERNAME]  
 
 ### 功能介绍: 安全地更改用户的密码
 ```sql
@@ -1392,7 +1392,7 @@ Enter it again:
 mydatabase=#
 ```
  
-##【命令: \conninfo】
+## 命令: \conninfo 
 
 ### 功能介绍: 显示有关当前连接的信息
 ```sql
@@ -1402,7 +1402,7 @@ testdb=# \conninfo
 You are connected to database "testdb" as user "gpadmin" on host "127.0.0.1" at port "5432".
 testdb=#
 ``` 
-##【命令: \cd [DIR]】
+## 命令: \cd [DIR] 
 
 ### 功能介绍: 更改当前工作目录
 ```sql
@@ -1413,7 +1413,7 @@ testdb=# \! pwd
 /home/gpadmin/data
 testdb=#
 ``` 
-##【命令: \timing [on|off] 】
+## 命令: \timing [on|off]  
 
 ### 功能介绍: 以毫秒为单位显示每条 SQL 语句的耗时
 ```sql
@@ -1427,7 +1427,7 @@ testdb=# select 1;
 
 Time: 1.379 ms
 ```
-##【命令: \! [COMMAND] 】
+## 命令: \! [COMMAND]  
 
 ### 功能介绍: 在shell中执行命令或启动交互式shell
 ```sql
@@ -1437,7 +1437,7 @@ testdb=# \! hostname
 test
 testdb=#
 ``` 
-##【命令: \prompt [TEXT] NAME 】
+## 命令: \prompt [TEXT] NAME  
 
 ### 功能介绍: 提示用户设置内部变量(没有理解透，各位可以自行研究)
 ```sql
@@ -1445,7 +1445,7 @@ mydatabase=# \prompt 'tishi' var
 tishi
 ```
 
-##【命令: \set [NAME [VALUE]] 】
+## 命令: \set [NAME [VALUE]]  
 
 ### 功能介绍: 设置内部变量，如果没有参数，则列出所有
 ```sql
@@ -1471,7 +1471,7 @@ var = ''
 a = '1;'
 ```
 
-##【命令: \unset NAME 】
+## 命令: \unset NAME  
 
 ### 功能介绍: 取消设置（删除）内部变量
 ```sql
