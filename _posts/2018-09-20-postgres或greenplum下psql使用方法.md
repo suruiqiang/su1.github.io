@@ -1112,9 +1112,9 @@ testdb=# \l+
 ### 功能介绍: 在未对齐和对齐的输出模式之间切换
 ```sql
 mydatabase=#  SELECT p1.name,p2.name,
-					ST_Distance_Sphere(p1.the_geom,p2.the_geom) 
-			  FROM cities AS p1, 
-                    cities AS p2 
+                    ST_Distance_Sphere(p1.the_geom,p2.the_geom) 
+              FROM cities AS p1, 
+                   cities AS p2 
               WHERE p1.id > Domain Premium: p2.id;
       name       |      name       | st_distance_sphere 
 -----------------+-----------------+--------------------
