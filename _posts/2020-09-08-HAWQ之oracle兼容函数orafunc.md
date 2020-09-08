@@ -53,7 +53,7 @@ psql dw -f $GPHOME/share/postgresql/contrib/orafunc.sql
 |NVL2|select oracompat.nvl2(NULL,'y'::text,'n'::text);<br />select oracompat.nvl2('','y'::text,'n'::text);<br />select oracompat.nvl2('1','y'::text,'n'::text);|nvl2()(E1, E2, E3)的功能为：如果E1为NULL，则函数返回E3，若E1不为null，则返回E2|
 |LNNVL|-|-|
 |DUMP|select oracompat.dump('Tech');<br />select oracompat.dump('Tech', 10) ;<br />select oracompat.dump('Tech', 16) ;|返回一个varchar2值，这个值包含了数据类型代码、字节长度和表达式的内部表示形式<br />https://wiki.imooc.com/oracle/dump.html|
-|NLSSORT|SELECT * FROM test ORDER BY oracompat.NLSSORT(name,'zh_CN.utf8');<br />SELECT * FROM test ORDER BY oracompat.NLSSORT(name,'en_US.utf8');<br />SELECT * FROM test ORDER BY oracompat.NLSSORT(name,'zh_CN.gb18030');|NLSSORT返回字符值char的排序规则键和显式或隐式指定的排序规则。<br />排序规则键是一个用于根据指定的排序规则对char进行排序的字节字符串。<br />排序规则键的属性是：<br />    按二进制比较由给定的排序规则生成的两个排序键的相互排序和按给定的排序规则比较源字符值的相互排序相同|
+|NLSSORT|SELECT * FROM test <br />ORDER BY oracompat.NLSSORT(name,'zh_CN.utf8');<br />SELECT * FROM test <br />ORDER BY oracompat.NLSSORT(name,'en_US.utf8');<br />SELECT * FROM test <br />ORDER BY oracompat.NLSSORT(name,'zh_CN.gb18030');|NLSSORT返回字符值char的排序规则键和显式或隐式指定的排序规则。<br />排序规则键是一个用于根据指定的排序规则对char进行排序的字节字符串。<br />排序规则键的属性是：<br />    按二进制比较由给定的排序规则生成的两个排序键的相互排序和按给定的排序规则比较源字符值的相互排序相同|
 |SUBSTR|SELECT oracompat.substr('ABCDEFG',0,3) ;<br />SELECT oracompat.substr('ABCDEFG',1,3) ;<br />SELECT oracompat.substr('ABCDEFG',2,3) ;<br />SELECT oracompat.substr('ABCDEFG',-1,3);|取得字符串中指定起始位置和长度的字符串|
 
 
