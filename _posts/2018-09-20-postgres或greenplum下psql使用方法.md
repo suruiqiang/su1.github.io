@@ -1492,6 +1492,7 @@ mydatabase=#
 
 ## 大对象操作
 ```sql
+## 没有找到测试方法
 Large Objects
 
 \lo_export LOBOID FILE
