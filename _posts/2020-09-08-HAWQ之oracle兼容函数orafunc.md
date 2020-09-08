@@ -35,7 +35,7 @@ psql dw -f $GPHOME/share/postgresql/contrib/orafunc.sql
 
 
 |名字|例子|功能|
-|:-|-|-|
+|:-|:-|:-|
 |nvl|select oracompat.nvl(NULL,'1'::text)|等价PostgreSQL的SELECT coalesce(NULL,'1'::text)|
 |add_months|select oracompat.add_months('2020-05-25'::date,1);|增加月份|
 |last_day|select oracompat.last_day('2020-05-15'::date);|返回当前日期所在月份的最后一天的当前时间|
