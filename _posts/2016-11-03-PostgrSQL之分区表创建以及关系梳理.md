@@ -13,7 +13,7 @@ keywords: PostgrSQL
 ```
 
 ## a.创建分区
-```
+```sql
 Create table tr_g001_1
   (
 	Check(taskid>’1’ and taskid <’10’)
@@ -21,7 +21,7 @@ Create table tr_g001_1
 ```
 
 ## b.创建规则
-```
+```sql
 CREATE OR REPLACE RULE TR_G0001_1_rule AS
 ON INSERT TO TR_G0001 WHERE (TASKID>'1' AND TASKID<'100')
 DO INSTEAD
@@ -30,22 +30,22 @@ INSERT INTO TR_G0001_1 VALUES(NEW.*);
 
 ## c.删除规则
 ### 方案一：
-```
+```sql
 DROP RULE TR_G0001_1_rule ON TR_G0001
 ```
 
 ### 方案二：
-```
+```sql
 DROP RULE IF EXISTS TR_G0001_1_rule ON TR_G0001
 ```
 ## d.删除子表
-```
+```sql
 DROP TABLE IF EXISTS TR_G0001_1  
 ```
 
 # 查父表子表的继承各种关系
 ## 查父表
-```
+```sql
 select distinct pi.inhparent,
                 pc.relname parent_name 
 from  pg_inherits pi 
@@ -54,7 +54,7 @@ left join pg_class pc
 ```
  
 ## 查子表
-```
+```sql
 select distinct pi.inhrelid,
                 pc.relname child_name 
 from  pg_inherits pi 
@@ -63,7 +63,7 @@ left join pg_class pc
 ```
 
 ## 查父表子表的继承关系
-```
+```sql
 select  pi.inhrelid child_oid,
         pc.relname child_name,
         pi.inhparent parent_oid,
@@ -76,6 +76,7 @@ left join pg_class pc2
 ```
 
 ## 根据父表找出子表的名称
+```sql
 select child_name from 
 (
 select  pi.inhrelid child_oid,

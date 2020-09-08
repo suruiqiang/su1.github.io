@@ -8,7 +8,7 @@ keywords: PostgrSQL
 
 # a.建指定用户的表空间
 ```sql
-create tablespace test_tbs owner “test_usr” location ‘/data/pgsqldata/test_tbs’;
+create tablespace test_tbs owner "test_usr" location '/data/pgsqldata/test_tbs';
 ```
 
 # b.建指定表空间的表
