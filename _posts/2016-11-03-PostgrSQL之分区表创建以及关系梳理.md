@@ -88,6 +88,7 @@ left join pg_class pc
     on pi.inhrelid=pc.oid
 left join pg_class pc2
     on pi.inhparent=pc2.oid
-) as t where parent_name ='父表名';
-``` 
+) as t where parent_name ='父表名'
+```
+ 
 
