@@ -952,7 +952,7 @@ test=#
 
 ## 命令: \dt[S+] [PATTERN]  
 
-###功能介绍: 显示表
+### 功能介绍: 显示表
 ```sql
 mydatabase=# \dtS+ 
                                   List of relations
