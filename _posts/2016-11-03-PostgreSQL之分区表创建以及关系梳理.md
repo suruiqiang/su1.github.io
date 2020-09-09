@@ -1,9 +1,9 @@
 ---
 layout: post
-title: PostgrSQL之分区表创建以及关系梳理
-categories: PostgrSQL
-description: PostgrSQL之分区表创建以及关系梳理
-keywords: PostgrSQL
+title: PostgreSQL之分区表创建以及关系梳理
+categories: PostgreSQL
+description: PostgreSQL之分区表创建以及关系梳理
+keywords: PostgreSQL
 ---
 
 # 分区的操作

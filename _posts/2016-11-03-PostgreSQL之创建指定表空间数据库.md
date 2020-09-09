@@ -1,9 +1,9 @@
 ---
 layout: post
-title: PostgrSQL之创建指定表空间数据库
-categories: PostgrSQL
-description: PostgrSQL之创建指定表空间数据库
-keywords: PostgrSQL
+title: PostgreSQL之创建指定表空间数据库
+categories: PostgreSQL
+description: PostgreSQL之创建指定表空间数据库
+keywords: PostgreSQL
 ---
 
 # 方案一:

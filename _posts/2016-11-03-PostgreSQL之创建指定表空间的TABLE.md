@@ -1,9 +1,9 @@
 ---
 layout: post
-title: PostgrSQL之创建指定表空间的TABLE
-categories: PostgrSQL
-description: PostgrSQL之创建指定表空间的TABLE
-keywords: PostgrSQL
+title: PostgreSQL之创建指定表空间的TABLE
+categories: PostgreSQL
+description: PostgreSQL之创建指定表空间的TABLE
+keywords: PostgreSQL
 ---
 
 # a.建指定用户的表空间

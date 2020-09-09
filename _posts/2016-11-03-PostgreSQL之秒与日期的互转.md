@@ -1,9 +1,9 @@
 ---
 layout: post
-title: PostgrSQL之秒与日期的互转
-categories: PostgrSQL
-description: PostgrSQL之秒与日期的互转
-keywords: PostgrSQL
+title: PostgreSQL之秒与日期的互转
+categories: PostgreSQL
+description: PostgreSQL之秒与日期的互转
+keywords: PostgreSQL
 ---
 
 # 秒 ==> 日期('yyyymmdd')

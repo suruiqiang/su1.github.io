@@ -1,9 +1,9 @@
 ---
 layout: post
-title: PostgrSQL之启动与关闭
-categories: PostgrSQL
-description: PostgrSQL之启动与关闭
-keywords: PostgrSQL
+title: PostgreSQL之启动与关闭
+categories: PostgreSQL
+description: PostgreSQL之启动与关闭
+keywords: PostgreSQL
 ---
 
 
