@@ -6,7 +6,7 @@ description: PostgreSQL之DBLINK
 keywords: PostgreSQL
 ---
 # 参考
-[dblink-connect](https://www.postgresql.org/docs/10/contrib-dblink-function.html)
+[dblink-connect](https://www.postgresql.org/docs/10/contrib-dblink-function.html) <br />
 [dblink-disconnect](https://www.postgresql.org/docs/10/contrib-dblink-disconnect.html)
 
 # 实例
