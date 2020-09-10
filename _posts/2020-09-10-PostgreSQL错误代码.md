@@ -20,8 +20,6 @@ keywords: PostgreSQL
   <link rel="next" href="datetime-appendix.html" title="附录&nbsp;B.&nbsp;日期/时间支持" />
  </head>
  <body> 
-  </div> 
-  </div>
   <div class="appendix" id="ERRCODES-APPENDIX">
    <div class="titlepage">
     <div>
@@ -1147,4 +1145,3 @@ keywords: PostgreSQL
    <br class="table-break" />
   </div>
  </body>
-</html>
