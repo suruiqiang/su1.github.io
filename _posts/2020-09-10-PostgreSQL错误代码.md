@@ -8,11 +8,13 @@ keywords: PostgreSQL
 # 参考
 [errcode](http://www.postgres.cn/docs/9.4/errcodes-appendix.html)
 
+# 说明
+从官方拉过来做个记录
 
-
+# PostgreSQL错误代码
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>附录&nbsp;A.&nbsp;PostgreSQL错误代码</title>
+<!--  <title>附录&nbsp;A.&nbsp;PostgreSQL错误代码</title> -->
   <link rel="stylesheet" type="text/css" href="stylesheet.css" />
   <link rev="made" href="pgsql-docs@postgresql.org" />
   <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
