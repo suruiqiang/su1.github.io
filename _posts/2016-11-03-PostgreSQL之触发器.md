@@ -6,9 +6,10 @@ description: PostgreSQL之触发器
 keywords: PostgreSQL
 ---
 # 参考
-
+[postgresql_triggers](https://www.tutorialspoint.com/postgresql/postgresql_triggers.htm)
 
 # 特殊变量介绍
+```sql
 用CREATE FUNCTION命令创建
 系统会在顶层的声明段里自动创建几个特殊变量。
 NEW:
@@ -27,7 +28,10 @@ TG_RELNAME:
     数据类型是name；是激活触发器调用的表的名称。
 TG_NARGS:
     数据类型是integer； 是在CREATE TRIGGER 语句里面赋予触发器过程的参数的个数。
-例子
+```
+
+# 例子
+```sql
 CREATE OR REPLACE function emp_sal_trig_function() RETEURNMS trigger AS $$
 DECLARE
 		sal_diff numeric(7,2);
@@ -53,11 +57,18 @@ $$ LANGUAGE plpgsql;
  
 CREATE TRIGGER emp_sal_trig BEFORE INSERT OR UPDATE OR DELETE ON emp
 FOR EACH ROW EXECUTE PROCEDURE emp_sal_trig_function();
+```
  
-返回值说明
-它可以返回NULL以忽略对当前行的操作。 这就指示执行器不要执行调用该触发器的行级别操作(对特定行的插入或者更改)。 
-只用于INSERT和UPDATE行触发器： 返回的行将成为被插入的行或者是成为将要更新的行。 这样就允许触发器函数修改将要被插入或者更新的行。 
-一个无意导致任何这类行为的在操作之前触发的行级触发器必须仔细返回那个被 当作新行传进来的行。也就是说，对于INSERT 和 UPDATE触发器而言， 是NEW行，对于DELETE触发器而言，是OLD行。 
+# 返回值说明
+`
+它可以返回NULL以忽略对当前行的操作。 
+这就指示执行器不要执行调用该触发器的行级别操作(对特定行的插入或者更改)。 
+
+只用于INSERT和UPDATE行触发器： 
+    返回的行将成为被插入的行或者是成为将要更新的行。 这样就允许触发器函数修改将要被插入或者更新的行。 
+
+一个无意导致任何这类行为的在操作之前触发的行级触发器必须仔细返回那个被 当作新行传进来的行。
+也就是说，对于INSERT 和 UPDATE触发器而言， 是NEW行，对于DELETE触发器而言，是OLD行。 
 对于在操作之后触发的行级触发器，其返回值会被忽略，因此可以返回NULL。 
- 
+` 
 
