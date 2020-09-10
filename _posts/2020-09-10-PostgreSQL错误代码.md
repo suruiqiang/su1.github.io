@@ -26,7 +26,7 @@ keywords: PostgreSQL
    <div class="titlepage">
     <div>
      <div>
-      <h2 class="title">附录&nbsp;A.&nbsp;<span class="productname">PostgreSQL</span>错误代码</h2>
+<!--      <h2 class="title">附录&nbsp;A.&nbsp;<span class="productname">PostgreSQL</span>错误代码</h2> -->
      </div>
     </div>
    </div>
