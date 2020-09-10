@@ -7,7 +7,7 @@ keywords: PostgreSQL
 ---
 # 参考
 [ PostgreSQL10实时全文检索和分词,相似搜索,模糊匹配实现类似Google搜索自动提示](https://www.debugger.wiki/article/html/1562855079393888)
-这个帖子的方法比较不错,值得试试,被吸引的点如下:
+<br />这个帖子的方法比较不错,值得试试,被吸引的点如下:
 ```sql
 CREATE INDEX name_idx ON goods USING GIN(to_tsvector('English',name));
 ```
