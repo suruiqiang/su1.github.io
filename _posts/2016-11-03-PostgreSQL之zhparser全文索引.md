@@ -54,7 +54,7 @@ UPDATE tb_staticsite SET siteaddress_ts =to_tsvector('chinesecfg', siteaddress);
 
 ## 查询
 ```sql
-SELECT * FROM tb_staticsite WHERE sitedesc_ts @@ to_tsquery('南京市');
-SELECT * FROM tb_staticsite WHERE siteaddress_ts @@ to_tsquery('江苏省');
-``` 
+SELECT * FROM tb_staticsite WHERE sitedesc_ts @@ to_tsquery('杭州市');
+SELECT * FROM tb_staticsite WHERE siteaddress_ts @@ to_tsquery('浙江省');
+```
 
