@@ -31,6 +31,7 @@ set @tdef=@tdef+'id'+cast(@i as string)+' text);';
 print @tdef;
  
 create table @tdef;
+
 --上述脚本会创建表create table test(id0 text,id1 text,id2 text,id3 text,id4 text,id5 text);
 ```
 
