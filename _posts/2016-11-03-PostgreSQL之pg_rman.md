@@ -82,7 +82,7 @@ pg_rman show -B /pgdata/backup/pg_rman
 pg_rman show timeline -B /pgdata/backup/pg_rman 
 ```
  
-## 恢复
+## rman恢复
 ### 获取备份的xid
 ```shell
 pg_rman show  -B /pgdata/backup/pg_rman
