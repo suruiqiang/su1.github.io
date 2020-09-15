@@ -1,8 +1,8 @@
 ---
 layout: post
-title: PostgreSQL之pg\_rman 
+title: PostgreSQL之pg_rman 
 categories: PostgreSQL
-description: PostgreSQL之pg\_rman
+description: PostgreSQL之pg_rman
 keywords: PostgreSQL
 ---
 # 参考
