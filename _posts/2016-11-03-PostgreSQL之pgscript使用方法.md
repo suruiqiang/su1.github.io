@@ -6,7 +6,12 @@ description: PostgreSQL之pgscript使用方法
 keywords: PostgreSQL
 ---
 # 参考
-[pgscript](https://documentation.help/pgAdmin-III/pgscript.html)
+[pgscript](https://wiki.postgresql.org/wiki/Gsoc08-pgscript)
+
+# pgScript作用
+```
+pgScript是一种客户端脚本语言，而pl/PgSQL在服务器上运行。这意味着它们有完全不同的用例
+```
 
 # 实例
 ## pgscript小例
