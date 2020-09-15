@@ -6,11 +6,11 @@ description: PostgreSQL之安装plpython
 keywords: PostgreSQL
 ---
 # 参考
-[nstalling-plpython](https://stackoverflow.com/questions/12010344/postgres-database-crash-when-installing-plpython)
+[installing-plpython](https://stackoverflow.com/questions/12010344/postgres-database-crash-when-installing-plpython)
 
 # 实例
 ## 方法一
-### 1.在安装的时候,在步骤
+### 1.configure指定参数
 ```shell
 ./configure 改为      ./configure --with-python
 ## 然后正常安装即可
@@ -33,7 +33,10 @@ postgres=# select * from pg_language
 ```
 
 ## 方法二
-在安装的时候没有加参数--with-python的安装方法
+### 说明
+```shell
+## 在安装的时候没有加参数--with-python的安装方法
+```
 ### 1.将源码包放入你的工作目录/work
 ### 2.解压源码包
 ### 3.进入源码包中
