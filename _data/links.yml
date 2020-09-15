@@ -14,6 +14,10 @@
   url: https://gp-docs-cn.github.io/docs/
   src: life
 
+- name: yiibai-postgresql
+  url: https://www.yiibai.com/postgresql/
+  src: life
+
 - name: 码志-博客模版的作者
   url: http://mazhuang.org
   src: life
