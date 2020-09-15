@@ -12,7 +12,6 @@ keywords: PostgreSQL
 ## 连接方式1
 ```shell
 psql postgres://DB_USER:DB_PASS@IP:PORT/DB
-
 ```
 
 ## 连接方式2
