@@ -33,7 +33,7 @@ drop tablespace weishu_tbs including contents and datafiles;
 # 删除正在连接的用户
 ## 查看status
 ```sql
-select t.USERNAME,t.SID,t.SERIAL#,t.STATUS from v$session t where lower(username)='weishu';
+select t.USERNAME,t.SID,t.SERIAL#,t.STATUS from v$session t where lower(username)='XXX';
 ```
 ## 杀掉sid，sersial#
 ```sql
