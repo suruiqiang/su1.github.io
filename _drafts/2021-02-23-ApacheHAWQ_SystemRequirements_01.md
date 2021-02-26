@@ -2,7 +2,7 @@
 layout: post
 title: ApacheHAWQ_SystemRequirements_01 
 categories: ApacheHAWQ翻译
-description: ApacheHAWQ_SystemRequirements_01.md
+description: ApacheHAWQ_SystemRequirements_01
 keywords: ApacheHAWQ翻译
 ---
 [toc]
