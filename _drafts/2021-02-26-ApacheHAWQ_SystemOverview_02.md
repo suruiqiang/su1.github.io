@@ -23,7 +23,7 @@ HAWQ提供业界领先的性能和线性可扩展性。<br />它为用户提供�
 - 世界级并行优化器
 - 完整的事务处理能力和一致性保证：ACID
 - 基于高速UDP互连的动态数据流引擎
-- 基于按需的virtual segments and data locality的弹性执行引擎
+- 基于按需的virtual segments 和 data locality的弹性执行引擎
 - 支持多级分区和基于 List/Range的分区表。
 - 支持多种压缩方法：snappy、gzip
 - 多语言用户自定义函数支持：Python、Perl、java、C/C++、R
