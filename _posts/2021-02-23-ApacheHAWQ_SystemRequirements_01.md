@@ -6,7 +6,6 @@ description: ApacheHAWQ_SystemRequirements_01
 keywords: ApacheHAWQ翻译
 ---
 
-
 按照以下指导原则配置好即将在每台机器上运行Apache HAWQ或PXF服务。
 
 # 主机内存配置
