@@ -6,11 +6,7 @@ description: ApacheHAWQ_SystemOverview_02
 keywords: ApacheHAWQ翻译
 ---
 
-[HAWQ是什么?](# HAWQ是什么?)
-[HAWQ 架构](# HAWQ 架构)
-[表分配和存储](# 表分配和存储)
-[弹性查询执行运行时间](# 弹性查询执行运行时间)
-[资源管理](# 资源管理)
+
 
 
 
@@ -52,7 +48,13 @@ HAWQ的基本并行单元是segment实例。<br />商品服务器上的多个seg
 
 HAWQ基于Hadoop的分布式存储，无单点故障，支持全自动在线恢复。<br />系统状态被持续监视，因此如果某个segmemt出现故障，它将自动从集群中删除。<br />在此过程中，系统将继续为客户查询提供服务，必要时可以将这些segments添加回系统。
 
-[HAWQ Architecture](# HAWQ Architecture)
+[HAWQ是什么?](# HAWQ是什么?)<br />
+[HAWQ 架构](# HAWQ 架构)<br />
+[表分配和存储](# 表分配和存储)<br />
+[弹性查询执行运行时间](# 弹性查询执行运行时间)<br />
+[资源管理](# 资源管理)<br />
+
+......待续
 
 
 
@@ -92,21 +94,27 @@ HAWQ、HDFS和YARN的master部署在不同的节点上。
 
 下图提供了典型HAWQ部署的高级体系结构视图。
 
+![Hawq high level architecture2](images/posts/hawq_a_01.png)
+
 <!--
 ![Hawq high level architecture](/Users/fei/blog/fei.github.io/images/posts/hawq_a_01.png)
 -->
 
-![Hawq high level architecture2](images/posts/hawq_a_01.png)
+
+
+
 
 HAWQ与YARN（Hadoop资源管理框架）紧密集成，用于查询资源管理。<br /> HAWQ将YARN中的容器缓存在资源池中，然后通过利用HAWQ自己针对用户和组的更细粒度的资源管理在本地管理这些资源。<br />为了执行查询，HAWQ根据查询的成本，资源队列定义，数据位置和系统中当前的资源使用情况分配一组virtual segments。<br />然后将查询分派到相应的物理主机，这些物理主机可以是集群的子集或整个群集。<br />每个节点上的HAWQ资源强制执行监视和控制查询所使用的实时资源，以避免违反资源使用情况。
 
 
 
 下图提供了构成HAWQ的软件组件的另一个视图。
+
+![Hawq architecture components](/images/posts/hawq_a_02.png)
+
 <!--
 ![Hawq architecture components](/Users/fei/blog/fei.github.io/images/posts/hawq_a_02.png)
 -->
-![Hawq architecture components](/images/posts/hawq_a_02.png)
 
 
 
