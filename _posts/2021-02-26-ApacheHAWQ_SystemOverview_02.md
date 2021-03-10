@@ -94,7 +94,7 @@ HAWQ、HDFS和YARN的master部署在不同的节点上。
 
 下图提供了典型HAWQ部署的高级体系结构视图。
 
-![Hawq high level architecture2](images/posts/hawq_a_01.png)
+![Hawq high level architecture2](/images/posts/hawq_a_01.png)
 
 <!--
 ![Hawq high level architecture](/Users/fei/blog/fei.github.io/images/posts/hawq_a_01.png)
