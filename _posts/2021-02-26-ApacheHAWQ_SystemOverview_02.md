@@ -53,11 +53,9 @@ HAWQ基于Hadoop的分布式存储，无单点故障，支持全自动在线恢�
 [表分配和存储](# 表分配和存储)<br />
 [弹性查询执行运行时间](# 弹性查询执行运行时间)<br />
 [资源管理](# 资源管理)<br />
-
-......待续
-
-
-
+[HDFS Catalog 缓存](# HDFS Catalog 缓存)<br />
+[HAWQ管理工具](# HAWQ管理工具)<br  />
+[高可用性、冗余性和故障容错](# 高可用性、冗余性和故障容错)<br />
 
 
 --------------------------------
@@ -189,7 +187,7 @@ HAWQ catalog service 存储所有元数据，例如UDF/UDT信息、关系信息�
 
 
 
-## HAWQ Fault Tolerance Service(HAWQ容错服务)
+## HAWQ Fault Tolerance Service
 
 HAWQ容错服务（FTS）负责检测segment故障并接收来自segment的心跳信号。
 
@@ -304,6 +302,80 @@ HAWQ 使用动态分配的virtual segments来提供用于查询执行的资源�
 
 # 资源管理
 
-......待续
+HAWQ 提供了多种资源管理方法，包括多个用户可配置的选项，包括与 YARN 资源管理的集成。
 
-http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/overview/ResourceManagement.html
+HAWQ 能够使用以下机制管理资源：
+
+- 全局资源管理。您可以将 HAWQ 与 YARN 资源管理器集成，根据需要请求或返回资源。如果您不将 HAWQ 与 YARN 集成，HAWQ 将专门消耗集群资源并管理自己的资源。如果您将 HAWQ 与 YARN 集成，则 HAWQ 会自动从 YARN 获取资源，并通过其内部定义的资源队列管理获得的资源。当不再使用资源时，资源会自动返回到 YARN。
+
+- 用户定义了不同级别的资源队列。HAWQ 管理员或超级使用者设计并定义资源队列,以便资源队列可以组织资源分配用于查询。
+- 查询运行时的动态资源配置。HAWQ 根据资源队列定义动态分配资源。HAWQ 会根据运行（或排队）查询和资源队列容量自动分配资源。
+- virtual segments和query的资源限制。您可以配置 HAWQ 来强制限制virtual segments和使用的资源队列的 CPU 和内存的query使用。
+
+有关 HAWQ 资源管理及其工作原理的更多详细信息，请参阅[管理资源_待定?](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/resourcemgmt/HAWQResourceManagement.html)。
+
+
+
+# HDFS Catalog 缓存
+
+HDFS Catalog 缓存是 HAWQ master用来确定 HDFS 表数据分布信息的缓存服务。
+
+
+
+HDFS 在 RPC 处理方面进展缓慢，尤其是在并发请求数量较高时。<br />为了决定哪个HAWQ segments处理数据的哪一部分，HAWQ 需要来自 HDFS NameNodes的数据位置信息。<br />HDFS Catalog 缓存用于缓存数据位置信息并加速 HDFS RPC。
+
+
+
+# HAWQ管理工具
+
+HAWQ 管理工具合并为一个 `hawq` 命令。
+
+hawq 命令可以单独启动、启动和停止每个segment，并支持集群的动态扩展。
+
+有关 HAWQ 中可用的所有工具列表，请参阅 [HAWQ 管理工具参考_待定?](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/reference/cli/management_tools.html)。
+
+
+
+# 高可用性、冗余性和故障容错
+
+> in this topic:
+>
+> i.[高可用](## 高可用)
+>
+> ii.[Segment故障容错](## Segment故障容错)
+>
+> iii.[内部连接冗余性](## 内部连接冗余性)
+
+HAWQ 通过系统冗余确保集群的高可用性。<br />HAWQ 部署利用平台硬件冗余，例如HAWQ master catalog的 RAID、segment的 JBOD 和互连层的网络冗余。<br />在软件级别上，HAWQ 通过master镜像和双集群维护提供冗余。<br />此外，HAWQ 支持高可用的HDFS NameNode配置。
+
+
+
+为了保持集群健康，HAWQ 使用基于心跳和按需探针协议的故障耐受性服务。<br />它可以动态识别新添加的节点，并在节点无法使用时从群集中删除它。<br />
+
+
+
+## 高可用
+
+HAWQ 采用多种机制来确保高可用性。最重要的机制是针对HAWQ的，包括以下内容：
+
+- Master镜像。集群在primary master异常失败时,具有standby master主机备份可用。
+- 双集群。管理员可以创建一个辅助群集，并通过双 ETL 或备份和还原机制将其数据与主集群同步。
+
+除了在 HAWQ 级别上管理的高可用性外，您还可以通过实现 NameNodes 的高可用性功能，为 HAWQ 提供高可用性。<br />请参阅 [HAWQ 文件空间和启用高可用的 HDFS_待定?](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/admin/HAWQFilespacesandHighAvailabilityEnabledHDFS.html)。
+
+
+
+## Segment故障容错
+
+在 HAWQ 中，这些segments是无状态的。这确保了更快的恢复和更好的可用性。
+
+当segments失败时，segments被从资源池中删除。查询不再发送到该segment。<br />当该segment再次运行时，Fault Tolerance Service会验证其状态，并将该段重新添加到资源池中。
+
+
+
+## 内部连接冗余性
+
+互连` interconnect`是指该通信所依赖的segments和网络基础设施之间的过程间通信。<br />您可以通过在网络上部署双千兆以太网交换机和向 HAWQ 主机（master and segment）服务器部署冗余千兆网络连接来实现高度可用的互连。
+
+为了在 HAWQ 中使用多个 NIC，NIC做bond是必须的。
+
