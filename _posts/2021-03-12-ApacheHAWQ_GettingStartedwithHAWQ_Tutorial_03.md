@@ -32,7 +32,7 @@ keywords: ApacheHAWQ翻译
 
 # Lessons
 
-本指南包括以下内容和练习：
+本指南包括以下内容和练习：<br />
 [Lesson 1: Runtime Environmen](# Lesson 1 - Runtime Environment) - 检查并设置Hawq运行时环境。<br />
 [Lesson 2: Cluster Administration](# Lesson 2 - Cluster Administration) - 执行常见的Hawq群集管理活动。<br />
 [Lesson 3: Database Administration](# Lesson 3: Database Administration) - 数据库管理 - 执行常见的Hawq数据库管理活动。<br />
@@ -961,6 +961,8 @@ HAWQ schema是数据库的namespace。它包含诸如表，数据类型，函数
 ??
 
 
+
+----------------------------------------------------- 未完待续  ---------------------------------------------------- 
 
 http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html
 
