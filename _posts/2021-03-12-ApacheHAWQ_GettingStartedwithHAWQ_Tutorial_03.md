@@ -1138,12 +1138,9 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
    ```
 
 10. 退出psql子系统：
-
    ```shell
    hawqgsdb=# \q
    ```
-
-   
 
 ## 概括
 
@@ -1257,13 +1254,11 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
    **注意**：`create_pxf_tables.sql`脚本会在尝试创建每个外部表之前将其删除。如果这是您第一次执行此练习，则可以放心地忽略`psql`“table does not exist, skipping”消息。
    
 7. 运行以下脚本，以验证您是否成功创建了外部表定义：
-  
-   ```shell
+   ```shell  
    gpadmin@master$ ./verify_create_pxf_tables.sh 
    ```
   
    脚本的输出应与以下内容匹配：
-  
    ```shell
       Table Name                 |    Count 
    -------------------------------+------------------------
