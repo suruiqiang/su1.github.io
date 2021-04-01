@@ -33,12 +33,12 @@ keywords: ApacheHAWQ翻译
 # Lessons
 
 本指南包括以下内容和练习：
-[Lesson 1: Runtime Environmen](# Lesson 1 - Runtime Environment) - 检查并设置Hawq运行时环境。
-[Lesson 2: Cluster Administration](# Lesson 2 - Cluster Administration) - 执行常见的Hawq群集管理活动。
-[Lesson 3: Database Administration](# Lesson 3: Database Administration) - 数据库管理 - 执行常见的Hawq数据库管理活动。
-[Lesson 4: Sample Data Set and HAWQ Schemas](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html) - 示例数据集和Hawq模式 - 下载教程数据和工作文件，创建零售演示架构，将数据加载到HDFS。
-[Lesson 5: HAWQ Tables](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html) - Hawq表 - 创建和查询Hawq管理表。
-[Lesson 6: HAWQ Extension Framework (PXF)](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html) - HAWQ扩展框架（PXF） - 使用PXF访问外部HDFS数据。
+[Lesson 1: Runtime Environmen](# Lesson 1 - Runtime Environment) - 检查并设置Hawq运行时环境。<br />
+[Lesson 2: Cluster Administration](# Lesson 2 - Cluster Administration) - 执行常见的Hawq群集管理活动。<br />
+[Lesson 3: Database Administration](# Lesson 3: Database Administration) - 数据库管理 - 执行常见的Hawq数据库管理活动。<br />
+[Lesson 4: Sample Data Set and HAWQ Schemas](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html) - 示例数据集和Hawq模式 - 下载教程数据和工作文件，创建零售演示架构，将数据加载到HDFS。<br />
+[Lesson 5: HAWQ Tables](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html) - Hawq表 - 创建和查询Hawq管理表。<br />
+[Lesson 6: HAWQ Extension Framework (PXF)](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html) - HAWQ扩展框架（PXF） - 使用PXF访问外部HDFS数据。<br />
 
 --------
 
