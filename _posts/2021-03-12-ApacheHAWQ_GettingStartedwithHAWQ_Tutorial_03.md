@@ -439,10 +439,13 @@ HAWQ配置参数影响HAWQ群集和单个HAWQ节点的行为。
 
 > in this topic:
 >
-> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_adminprereq)
-> - [练习: 创建HAWQ教程数据库](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)
-> - [练习:使用psql进行表操作](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_usepsql)
-> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_dbadmin_summary)
+> i.[先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_adminprereq)
+>
+> ii.[练习: 创建HAWQ教程数据库](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)
+>
+> iii.[练习:使用psql进行表操作](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_usepsql)
+>
+> iv.[概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_dbadmin_summary)
 
 
 
@@ -671,11 +674,15 @@ HAWQ gpadmin用户和被授予必要特权的其他用户可以执行SQL命令�
 
 > in this topic:
 >
-> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dataset_prereq)
-> - [练习：下载零售演示数据和脚本文件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_exdownloadfilessteps)
-> - [练习：创建零售演示HAWQ模式](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dsschema_ex)
-> - [练习：将维度数据加载到HDFSS](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_loadhdfs_ex)
-> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dataset_summary)
+> i.[先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dataset_prereq)
+>
+> ii.[练习：下载零售演示数据和脚本文件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_exdownloadfilessteps)
+>
+> iii.[练习：创建零售演示HAWQ模式](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dsschema_ex)
+>
+> iv.[练习：将维度数据加载到HDFSS](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_loadhdfs_ex)
+>
+> v.[概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dataset_summary)
 
 
 
@@ -937,9 +944,11 @@ HAWQ schema是数据库的namespace。它包含诸如表，数据类型，函数
 
 > In this topic:
 >
-> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtblprereq)<br />
-> - [练习：创建，向HAWQ Retail演示表添加数据以及查询HAWQ Retail演示表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_excreatehawqtblsteps)<br />
-> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtbl_summary)<br />
+> i.[先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtblprereq)<br />
+>
+> ii.[练习：创建，向HAWQ Retail演示表添加数据以及查询HAWQ Retail演示表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_excreatehawqtblsteps)<br />
+>
+> iii.[概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtbl_summary)<br />
 
 HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任何关系数据库中的表，除了表行（数据）分布在集群中的不同segment上。<br />
 
@@ -1151,10 +1160,7 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
 
 > In this topic:
 >
-> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxfprereq)<br />
-> - [练习: 创建和查询PXF外部表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_excreatepxftblsteps)<br />
-> - [练习: 查询HAWQ和PXF表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_exhawqpxfquerysteps)<br />
-> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxf_summary)<br />
+> i.[先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxfprereq)<br />ii.[练习: 创建和查询PXF外部表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_excreatepxftblsteps)<br />iii.[练习: 查询HAWQ和PXF表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_exhawqpxfquerysteps)<br />iv.[概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxf_summary)<br />
 
 
 
