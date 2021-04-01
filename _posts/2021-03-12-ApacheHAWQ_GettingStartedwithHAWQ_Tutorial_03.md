@@ -1162,25 +1162,233 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
 
 
 
+许多HAWQ部署中的数据可能已经驻留在外部源中。<br /> HAWQ扩展框架(PXF)提供称为插件的内置连接器提供对此外部数据的访问。<br /> PXF插件有助于将数据源映射到HAWQ外部表定义。<br /> PXF与HDFS，Hive，HBase和JSON插件一起安装。<br />
+
+
+
+在本练习中，您将使用PXF HDFS插件执行以下操作：
+
+- 创建PXF外部表定义
+- 对您加载到HDFS中的数据执行查询
+- 在HAWQ和PXF表上运行更复杂的查询
+
+
+
 ## 先决条件
 
-？？
+确保您具有：
+
+- [设置您的HAWQ运行时环境](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqenv.html#tut_runtime_setup)
+
+- [创建了HAWQ教程数据库](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)
+
+- [下载了零售数据和脚本文件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_exdownloadfilessteps)
+
+- [创建了零售演示HAWQ SCHEMA](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dsschema_ex)
+
+- [将维度数据加载到HDFS](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_loadhdfs_ex)
+
+- [创建了HAWQ零售演示情况表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_excreatehawqtblsteps)
+
+- 启动您的HAWQ集群。
+
+  
+
+您还应该检索在[查看和更新HAWQ配置](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_ex_cmdline_cfg)中记下的HDFS NameNode的主机名或IP地址。
+
+
 
 ## 练习: 创建和查询PXF外部表
 
-？？ 
+执行以下步骤来创建HAWQ外部表定义，以读取您先前加载到HDFS中的维度数据。
+
+1. 以gpadmin用户身份登录到HAWQ主节点：
+
+   ```shell
+   $ ssh gpadmin@<master>
+   ```
+
+2. 导航到PXF脚本目录：
+
+   ```shell
+   gpadmin@master$ cd $HAWQGSBASE/tutorials/getstart/pxf
+   ```
+
+3. 启动`psql`子系统：
+
+   ```shell
+   gpadmin@master$ psql
+   hawqgsdb=#
+   ```
+
+4. 创建一个HAWQ外部表定义，以表示您在第4课中加载到HDFS的Retail `demo customer_dim`维度数据；在LOCATION子句的`<namenode>`字段中替换您的NameNode主机名或IP地址：
+
+   ```sql
+   hawqgsdb=# CREATE EXTERNAL TABLE retail_demo.customers_dim_pxf
+               (customer_id TEXT, first_name TEXT,
+                last_name TEXT, gender TEXT)
+              LOCATION ('pxf://<namenode>:51200/retail_demo/customers_dim/customers_dim.tsv.gz?profile=HdfsTextSimple')
+              FORMAT 'TEXT' (DELIMITER = E'\t');
+   CREATE EXTERNAL TABLE
+   ```
+
+   指定`pxf`协议的`CREATE EXTERNAL TABLE`语句的`LOCATION`子句必须包括：
+
+   - HAWQ群集的HDFS `<namenode>`的主机名或IP地址。
+   - 外部数据源的位置或名称。您在上面的`customer_dim`数据文件中指定了HDFS文件路径。
+   - 用于访问外部数据的PXF配置文件。 PXF HDFS插件支持`HdfsTextSimple`配置文件，以访问分隔的文本格式数据。
+
+   指定`pxf`协议和`HdfsTextSimple`配置文件的`CREATE EXTERNAL TABLE`语句的`FORMAT`子句必须标识`TEXT`格式，并包括用于访问外部数据源的DELIMITER字符。您在上面标识了制表符分隔符。
+
+5. SQL脚本`create_pxf_tables.sql`为其余的Retail维度数据创建HAWQ外部表定义。在另一个终端窗口中，编辑`create_pxf_tables.sql`，将每次出现的`NAMENODE`替换为您在上一步中指定的主机名或IP地址。例如：
+
+   ```shell
+   gpadmin@master$ cd $HAWQGSBASE/tutorials/getstart/pxf
+   gpadmin@master$ vi create_pxf_tables.sql
+   ```
+
+6. 运行`create_pxf_tables.sql` SQL脚本以创建其余的HAWQ外部表定义，然后退出psql子系统：
+
+   ```shell
+   hawqgsdb=# \i create_pxf_tables.sql
+   hawqgsdb=# \q
+   ```
+
+   **注意**：`create_pxf_tables.sql`脚本会在尝试创建每个外部表之前将其删除。如果这是您第一次执行此练习，则可以放心地忽略`psql`“table does not exist, skipping”消息。
+   
+7. 运行以下脚本，以验证您是否成功创建了外部表定义：
+  
+  ```shell
+  gpadmin@master$ ./verify_create_pxf_tables.sh 
+  ```
+  
+   脚本的输出应与以下内容匹配：
+  
+  ```shell
+      Table Name                 |    Count 
+  -------------------------------+------------------------
+   customers_dim_pxf             |   401430  
+   categories_dim_pxf            |   56 
+   customer_addresses_dim_pxf    |   1130639
+   email_addresses_dim_pxf       |   401430
+   payment_methods_pxf           |   5
+   products_dim_pxf              |   698911
+  -------------------------------+------------------------
+  ```
+  
+8. 通过在`payment_methods_pxf`表上运行以下查询来显示允许的付款方式：
+
+   ```shell
+   gpadmin@master$ psql
+   hawqgsdb=# SELECT * FROM retail_demo.payment_methods_pxf;
+    payment_method_id | payment_method_code 
+   -------------------+---------------------
+                    4 | GiftCertificate
+                    3 | CreditCard
+                    5 | FreeReplacement
+                    2 | Credit
+                    1 | COD
+   (5 rows)
+   ```
+
+9. 在`customers_dim_pxf`和`customer_addresses_dim_pxf`表上运行以下查询，以显示邮政编码为06119的所有男性顾客的姓名：
+
+   ```shell
+   hawqgsdb=# SELECT last_name, first_name
+                FROM retail_demo.customers_dim_pxf, retail_demo.customer_addresses_dim_pxf
+              WHERE retail_demo.customers_dim_pxf.customer_id=retail_demo.customer_addresses_dim_pxf.customer_id AND
+                retail_demo.customer_addresses_dim_pxf.zip_code='06119' AND 
+                retail_demo.customers_dim_pxf.gender='M';
+   ```
+
+   将您的输出与以下内容进行比较：
+
+   ```shell
+    last_name | first_name 
+   -----------+------------
+    Gigliotti | Maurice
+    Detweiler | Rashaad
+    Nusbaum   | Morton
+    Mann      | Damian
+    ...
+   ```
+
+10. 退出psql子系统：
+
+   ```shell
+   hawqgsdb=# \q
+   ```
+
+   
 
 ## 练习: 查询HAWQ和PXF表
 
-？？ 
+通常，数据将同时驻留在HAWQ表和外部数据源中。<br />在这些情况下，可以同时使用HAWQ内部表和PXF外部表来关联和查询数据。<br />
+
+执行以下步骤，确定所有购买了礼券的客户的姓名和电子邮件地址，并提供此类购买的总体订单总额。<br />订单事实数据驻留在HAWQ管理的表中，而客户数据驻留在HDFS中。<br />
+
+1. 启动psql子系统：
+
+   ```shell 
+   gpadmin@master$ psql
+   hawqgsdb=#
+   ```
+
+2. 可通过上一课中创建的`orders_hawq`表访问订单事实数据。可通过上一个练习中创建的`customers_dim_pxf`表访问`customers`数据。使用这些内部和外部HAWQ表，构造查询以识别所有购买了礼券的客户的姓名和电子邮件地址；还包括此类购买的总订单总额：
+
+   ```shell
+   hawqgsdb=# SELECT substring(retail_demo.orders_hawq.customer_email_address for 37) AS email_address, last_name, 
+                sum(retail_demo.orders_hawq.total_paid_amount::float8) AS gift_cert_total
+              FROM retail_demo.customers_dim_pxf, retail_demo.orders_hawq
+              WHERE retail_demo.orders_hawq.payment_method_code='GiftCertificate' AND 
+                    retail_demo.orders_hawq.customer_id=retail_demo.customers_dim_pxf.customer_id
+              GROUP BY retail_demo.orders_hawq.customer_email_address, last_name ORDER BY last_name;
+   ```
+
+   上面的`SELECT`语句使用HAWQ`orders_hawq`和PXF外部`customer_dim_pxf`表中的列来构成查询。将`orders_hawq` `customer_id`字段与`customers_dim_pxf` `customer_id`字段进行比较，以生成与特定客户关联的订单，其中`orders_hawq` `payment_method_code`标识`GiftCertificate`。
+   查询输出：
+
+   ```shell 
+    email_address             |   last_name    |   gift_cert_total    
+   ---------------------------------------+----------------+-------------------
+    Christopher.Aaron@phpmydirectory.com  | Aaron          |             17.16
+    Libbie.Aaron@qatarw.com               | Aaron          |            102.33
+    Jay.Aaron@aljsad.net                  | Aaron          |             72.36
+    Marybelle.Abad@idividi.com.mk         | Abad           |             14.97
+    Suellen.Abad@anatranny.com            | Abad           |            125.93
+    Luvenia.Abad@mediabiz.de              | Abad           |            107.99
+    ...
+   ```
+
+   随时输入`q`退出查询结果。
+
+3. 退出psql子系统：
+
+   ```shell
+   hawqgsdb=# \q
+   ```
+
+   
 
 ## 概括
 
-？？
+在本课程中，您创建了PXF外部表来访问HDFS数据并查询了这些表。<br />您还使用此外部数据和先前创建的HAWQ内部事实表执行了查询，并对托管和非托管数据都执行了业务逻辑。
 
 
 
------------------------------------------------------ 未完待续  ---------------------------------------------------- 
+有关PXF的其他信息，请参阅[对非托管数据使用PXF](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/pxf/HawqExtensionFrameworkPXF.html)。
 
-http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html
+
+
+有关PXF HDFS插件的详细信息，请参阅[访问HDFS文件数据](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/pxf/HDFSFileDataPXF.html)。
+
+
+
+本课程总结了HAWQ入门教程。既然您已经熟悉了基本的环境设置，群集，数据库和数据管理活动，那么与HAWQ群集进行交互时应该会更加自信。
+
+
+
+后续步骤：查看与运行HAWQ群集有关的HAWQ文档。
+
+
 
