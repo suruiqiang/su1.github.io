@@ -1258,23 +1258,23 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
    
 7. 运行以下脚本，以验证您是否成功创建了外部表定义：
   
-  ```shell
-  gpadmin@master$ ./verify_create_pxf_tables.sh 
-  ```
+   ```shell
+   gpadmin@master$ ./verify_create_pxf_tables.sh 
+   ```
   
    脚本的输出应与以下内容匹配：
   
-  ```shell
+   ```shell
       Table Name                 |    Count 
-  -------------------------------+------------------------
+   -------------------------------+------------------------
    customers_dim_pxf             |   401430  
    categories_dim_pxf            |   56 
    customer_addresses_dim_pxf    |   1130639
    email_addresses_dim_pxf       |   401430
    payment_methods_pxf           |   5
    products_dim_pxf              |   698911
-  -------------------------------+------------------------
-  ```
+   -------------------------------+------------------------
+   ```
   
 8. 通过在`payment_methods_pxf`表上运行以下查询来显示允许的付款方式：
 
@@ -1302,7 +1302,6 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
    ```
 
    将您的输出与以下内容进行比较：
-
    ```shell
     last_name | first_name 
    -----------+------------
@@ -1314,7 +1313,6 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
    ```
 
 10. 退出psql子系统：
-
    ```shell
    hawqgsdb=# \q
    ```
