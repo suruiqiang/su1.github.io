@@ -1312,8 +1312,6 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
    hawqgsdb=# \q
    ```
 
-   
-
 ## 练习: 查询HAWQ和PXF表
 
 通常，数据将同时驻留在HAWQ表和外部数据源中。<br />在这些情况下，可以同时使用HAWQ内部表和PXF外部表来关联和查询数据。<br />
