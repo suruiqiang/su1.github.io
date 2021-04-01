@@ -937,9 +937,9 @@ HAWQ schema是数据库的namespace。它包含诸如表，数据类型，函数
 
 > In this topic:
 >
-> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtblprereq)
-> - [练习：创建，向HAWQ Retail演示表添加数据以及查询HAWQ Retail演示表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_excreatehawqtblsteps)
-> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtbl_summary)
+> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtblprereq)<br />
+> - [练习：创建，向HAWQ Retail演示表添加数据以及查询HAWQ Retail演示表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_excreatehawqtblsteps)<br />
+> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtbl_summary)<br />
 
 HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任何关系数据库中的表，除了表行（数据）分布在集群中的不同segment上。<br />
 
@@ -1151,10 +1151,10 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
 
 > In this topic:
 >
-> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxfprereq)
-> - [练习: 创建和查询PXF外部表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_excreatepxftblsteps)
-> - [练习: 查询HAWQ和PXF表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_exhawqpxfquerysteps)
-> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxf_summary)
+> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxfprereq)<br />
+> - [练习: 创建和查询PXF外部表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_excreatepxftblsteps)<br />
+> - [练习: 查询HAWQ和PXF表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_exhawqpxfquerysteps)<br />
+> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxf_summary)<br />
 
 
 
