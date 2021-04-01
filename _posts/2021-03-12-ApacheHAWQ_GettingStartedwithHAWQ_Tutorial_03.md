@@ -680,19 +680,287 @@ HAWQ gpadmin用户和被授予必要特权的其他用户可以执行SQL命令�
 
 
 
+本教程中使用的样本零售演示数据集对在线零售商店操作进行了建模。<br />该商店提供不同类别的产品。客户订购产品。公司将产品交付给客户。
+
+此练习和以后的练习都在此示例数据集上运行。<br />数据集在一组gzip格式的.tsv（制表符分隔的值）文本文件中提供。<br />这些练习还引用了对数据集进行操作的脚本和其他支持文件。
+
+在本节中，向您介绍了零售演示数据模式。<br />您将下载并检查数据集和工作文件。您还将把一些数据加载到HDFS中。
+
+
+
 ## 先决条件
+
+确保已[创建HAWQ数据库教程_待定?](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)，并且HAWQ群集已启动并正在运行。
 
 
 
 ## 练习：下载零售演示数据和脚本文件
 
+执行以下步骤以下载样本数据集和脚本：
+
+1. 打开一个终端窗口，并以`gpadmin`用户身份登录到HAWQ主节点：
+
+   ```shell
+   $ ssh gpadmin@<master>
+   ```
+
+2. 为数据文件和脚本创建一个工作目录：
+
+   ```shell
+   gpadmin@master$ mkdir /tmp/hawq_getstart
+   gpadmin@master$ cd /tmp/hawq_getstart
+   ```
+
+   您可以选择其他基础工作目录。如果这样做，请确保拥有`hawq_getstart`目录的所有路径组件都具有全部的读取和执行权限。
+
+3. 从github下载教程工作和数据文件，并检查适当的标记/分支：
+
+   ```shell
+   gpadmin@master$ git clone https://github.com/pivotalsoftware/hawq-samples.git
+   Cloning into 'hawq-samples'...
+   remote: Counting objects: 42, done.
+   remote: Total 42 (delta 0), reused 0 (delta 0), pack-reused 42
+   Unpacking objects: 100% (42/42), done.
+   Checking out files: 100% (18/18), done.
+   gpadmin@master$ cd hawq-samples
+   gpadmin@master$ git checkout hawq2x_tutorial
+   ```
+
+4. 将路径保存到工作文件基本目录：
+
+   ```shell
+   gpadmin@master$ export HAWQGSBASE=/tmp/hawq_getstart/hawq-samples
+   ```
+
+   (如果选择了其他基础工作目录，请相应地修改命令。)
+
+5. 将`$HAWQGSBASE`环境变量设置添加到您的`.bash_profile`。
+
+6. 检查教程文件。本指南中的练习参考了hawq-samples存储库中的数据文件以及SQL和Shell脚本。具体来说：
+
+   | Directory                | Content                                                 |
+   | :----------------------- | :------------------------------------------------------ |
+   | datasets/retail/         | Retail demo data set data files (`.tsv.gz` format)      |
+   | tutorials/getstart/      | *Getting Started with HAWQ* guide work files            |
+   | tutorials/getstart/hawq/ | SQL and shell scripts used by the HAWQ tables exercises |
+   | tutorials/getstart/pxf/  | SQL and shell scripts used by the PXF exercises         |
+
+   (HAWQ入门练习不使用上表中未提及的`hawq-samples`存储库目录。)
+
 
 
 ## 练习：创建零售演示HAWQ模式
 
+HAWQ schema是数据库的namespace。它包含诸如表，数据类型，函数和运算符之类的命名对象。通过使用前缀`<schema-name>`限定其名称来访问这些对象。
 
+
+
+执行以下步骤来创建Retail演示数据模式：
+
+1. 启动`psql`子系统：
+
+   ```shell
+   gpadmin@master$ psql
+   hawqgsdb=#
+   ```
+
+   您已连接到`hawqgsdb`数据库。
+
+2. 列出HAWQ模式：
+
+   ```shell
+   hawqgsdb=# \dn
+          List of schemas
+           Name        |  Owner  
+   --------------------+---------
+    hawq_toolkit       | gpadmin
+    information_schema | gpadmin
+    pg_aoseg           | gpadmin
+    pg_bitmapindex     | gpadmin
+    pg_catalog         | gpadmin
+    pg_toast           | gpadmin
+    public             | gpadmin
+   (7 rows)
+   ```
+
+   每个数据库都包含一个名为`public`的SCHEMA。在不指定架构的情况下创建的数据库对象将在默认SCHEMA中创建。默认的HAWQSCHEMA是`public`，除非您将其显式设置为另一个SCHEMA。 （稍后对此有更多介绍。）
+
+3. 在`public ` SCHEMA中显示表：
+
+   ```shell
+   hawqgsdb=#\dt public.*
+              List of relations
+    Schema |    Name   | Type  |  Owner  |   Storage   
+   --------+-----------+-------+---------+-------------
+    public | first_tbl | table | gpadmin | append only
+   (1 row)
+   ```
+
+   在第3课中，您在`public`  SCHEMA中创建了`first_tbl`表。
+
+4. 创建一个名为retail_demo的SCHEMA来表示Retail演示namespace：
+
+   ```shell 
+   hawqgsdb=# CREATE SCHEMA retail_demo;
+   CREATE SCHEMA
+   ```
+
+5. `search_path`服务器配置参数标识HAWQ应该搜索或应用对象的SCHEMA的顺序。设置SCHEMA搜索路径，使其首先包含新的`retail_demo` SCHEMA：
+
+   ```shell
+   hawqgsdb=# SET search_path TO retail_demo, public;
+   SET
+   ```
+
+   `retail_demo`，即`search_path`中的第一个架构，将成为您的默认SCHEMA。
+   **注意**：以这种方式设置`search_path`只会为当前`psql`会话设置参数。您必须在随后的psql会话中重新设置`search_path`。
+
+6. 创建另一个名为`first_tbl`的表：
+
+   ```shell
+   hawqgsdb=# CREATE TABLE first_tbl( i int );
+   CREATE TABLE
+   hawqgsdb=# INSERT INTO first_tbl SELECT generate_series(100,103);
+   INSERT 0 4
+   hawqgsdb=# SELECT * FROM first_tbl;
+     i  
+   -----
+    100
+    101
+    102
+    103
+   (4 rows)
+   ```
+
+   由于未为该表显式标识任何SCHEMA，因此HAWQ在默认SCHEMA中创建了名为`first_tbl`的表。由于您当前的`search_path` SCHEMA排序，您的默认SCHEMA为`retail_demo`。
+
+7. 通过在以下模式中显示表来验证在`first_tbl`模式中是否创建了`first_tbl`：
+
+   ```shell
+   hawqgsdb=#\dt retail_demo.*
+                        List of relations
+      Schema    |         Name         | Type  |  Owner  |   Storage   
+   -------------+----------------------+-------+---------+-------------
+    retail_demo | first_tbl            | table | gpadmin | append only
+   (1 row)
+   ```
+
+8. 查询您在第3课中创建的`first_tbl`表：
+
+   ```shell
+   hawqgsdb=# SELECT * from public.first_tbl;
+     i 
+   ---
+    1
+    2
+    3
+    4
+    5
+   (5 rows)
+   ```
+
+   您必须在表名前面加上public。明确标识您感兴趣的first_tbl表。
+
+9. 退出psql：
+
+   ```shell
+   hawqgsdb=# \q
+   ```
+
+   
 
 ## 练习：将维度数据加载到HDFS
+
+零售演示数据集包括下表中描述的实体。事实表由业务事实组成。<br />订单和订单行项目是事实表。维度表为事实表中的度量提供描述性信息。<br />其他实体在维度表中表示。
+
+| Entity                 | Description                                                  |
+| :--------------------- | :----------------------------------------------------------- |
+| customers_dim          | Customer data: first/last name, id, gender                   |
+| customer_addresses_dim | Address and phone number of each customer                    |
+| email_addresses_dim    | Customer e-mail addresses                                    |
+| categories_dim         | Product category name, id                                    |
+| products_dim           | Product details including name, id, category, and price      |
+| date_dim               | Date information including year, quarter, month, week, day of week |
+| payment_methods        | Payment method code, id                                      |
+| orders                 | Details of an order such as the id, payment method, billing address, day/time, and other fields. Each order is associated with a specific customer. |
+| order_lineitems        | Details of an order line item such as the id, item id, category, store, shipping address, and other fields. Each line item references a specific product from a specific order from a specific customer. |
+
+执行以下步骤，将零售演示维度数据加载到HDFS中以供以后使用：
+
+1. 导航到`PXF`脚本目录：
+
+   ```shell
+   gpadmin@master$ cd $HAWQGSBASE/tutorials/getstart/pxf
+   ```
+
+2. 使用提供的脚本，将代表维度数据的样本数据文件加载到名为`/retail_demo`的HDFS目录中。该脚本在加载数据之前删除所有现有的`/retail_demo`目录和内容：
+
+   ```shell
+   gpadmin@master$ ./load_data_to_HDFS.sh
+   running: sudo -u hdfs hdfs -rm -r -f -skipTrash /retail_demo
+   sudo -u hdfs hdfs dfs -mkdir /retail_demo/categories_dim
+   sudo -u hdfs hdfs dfs -put /tmp/hawq_getstart/hawq-samples/datasets/retail/categories_dim.tsv.gz /retail_demo/categories_dim/
+   sudo -u hdfs hdfs dfs -mkdir /retail_demo/customer_addresses_dim
+   sudo -u hdfs hdfs dfs -put /tmp/hawq_getstart/hawq-samples/datasets/retail/customer_addresses_dim.tsv.gz /retail_demo/customer_addresses_dim/
+   ...
+   ```
+
+   `load_to_HDFS.sh`将纬度数据`.tsv.gz`文件直接加载到HDFS中。每个文件都加载到其各自的` /retail_demo/<basename>/<basename>.tsv.gz`文件路径中。
+
+3. 查看HDFS `/retail_demo`目录层次结构的内容：
+
+   ```shell
+   gpadmin@master$ sudo -u hdfs hdfs dfs -ls /retail_demo/*
+   -rw-r--r--   3 hdfs hdfs        590 2017-04-10 19:59 /retail_demo/categories_dim/categories_dim.tsv.gz
+   Found 1 items
+   -rw-r--r--   3 hdfs hdfs   53995977 2017-04-10 19:59 /retail_demo/customer_addresses_dim/customer_addresses_dim.tsv.gz
+   Found 1 items
+   -rw-r--r--   3 hdfs hdfs    4646775 2017-04-10 19:59 /retail_demo/customers_dim/customers_dim.tsv.gz
+   Found 1 items
+   ...
+   
+   Because the retail demo data exists only as `.tsv.gz` files in HDFS, you cannot immediately query the data using HAWQ. In the next lesson, you create HAWQ external tables that reference these data files, after which you can query them via PXF.
+   ```
+
+   
+
+## 概括
+
+在本课程中，您下载了教程数据集和工作文件，创建了`retail_demo` HAWQ SCHEMA，并将Retail demo维度数据加载到HDFS中。
+
+在第5和第6课中，您将在`retail_demo`  SCHEMA中创建和查询HAWQ内部和外部表。
+
+
+
+----
+
+# Lesson 5 - HAWQ Tables
+
+> In this topic:
+>
+> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtblprereq)
+> - [练习：创建，向HAWQ Retail演示表添加数据以及查询HAWQ Retail演示表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_excreatehawqtblsteps)
+> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtbl_summary)
+
+
+
+## 先决条件
+
+??
+
+
+
+## 练习：创建，向HAWQ Retail演示表添加数据以及查询HAWQ Retail演示表
+
+??
+
+
+
+## 概括
+
+??
+
+
 
 http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html
 
