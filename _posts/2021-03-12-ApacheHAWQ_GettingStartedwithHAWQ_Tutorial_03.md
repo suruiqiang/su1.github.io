@@ -942,23 +942,238 @@ HAWQ schema是数据库的namespace。它包含诸如表，数据类型，函数
 > - [练习：创建，向HAWQ Retail演示表添加数据以及查询HAWQ Retail演示表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_excreatehawqtblsteps)
 > - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqtbls.html#tut_introhawqtbl_summary)
 
+HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任何关系数据库中的表，除了表行（数据）分布在集群中的不同segment上。<br />
+
+在本练习中，您将运行使用SQL `CREATE TABLE`命令创建HAWQ表的脚本。<br />您将使用SQL `COPY`命令将Retail演示事实数据加载到HAWQ表中。<br />然后，您将对数据执行简单和复杂的查询。
+
 
 
 ## 先决条件
 
-??
+确保您具有：
+
+> [设置您的HAWQ运行时环境](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqenv.html#tut_runtime_setup)
+> [创建了HAWQ数据库教程](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)
+> [下载了零售数据和脚本文件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_exdownloadfilessteps)
+> [创建了零售演示HAWQ模式](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dsschema_ex)
+> 启动您的HAWQ集群。
 
 
 
 ## 练习：创建，向HAWQ Retail演示表添加数据以及查询HAWQ Retail演示表
 
-??
+执行以下步骤，从示例零售演示数据集中创建和加载HAWQ表。
 
+1. 导航到HAWQ脚本目录：
 
+   ```shell
+   gpadmin@master$ cd $HAWQGSBASE/tutorials/getstart/hawq
+   ```
+
+2. 使用提供的脚本为Retail演示事实数据创建表：
+
+   ```shell
+   gpadmin@master$ psql -f ./create_hawq_tables.sql 
+   psql:./create_hawq_tables.sql:2: NOTICE:  table "order_lineitems_hawq" does not exist, skipping
+   DROP TABLE
+   CREATE TABLE
+   psql:./create_hawq_tables.sql:41: NOTICE:  table "orders_hawq" does not exist, skipping
+   DROP TABLE
+   CREATE TABLE
+   ```
+
+   **注意**：`create_hawq_tables.sql`脚本会在尝试创建每个表之前将其删除。如果这是您第一次执行此练习，则可以放心地忽略psql“表不存在，正在跳过”消息。）
+
+3. 让我们看一下`create_hawq_tables.sql`脚本；例如：
+
+   ```shell
+   gpadmin@master$ vi create_hawq_tables.sql
+   ```
+
+   请注意的使用`retail_demo.`SCHEMA的前缀为`order_lineitems_hawq`表名称：
+
+   ```sql
+   DROP TABLE IF EXISTS retail_demo.order_lineitems_hawq;
+   CREATE  TABLE retail_demo.order_lineitems_hawq
+   (
+       order_id TEXT,
+       order_item_id TEXT,
+       product_id TEXT,
+       product_name TEXT,
+       customer_id TEXT,
+       store_id TEXT,
+       item_shipment_status_code TEXT,
+       order_datetime TEXT,
+       ship_datetime TEXT,
+       item_return_datetime TEXT,
+       item_refund_datetime TEXT,
+       product_category_id TEXT,
+       product_category_name TEXT,
+       payment_method_code TEXT,
+       tax_amount TEXT,
+       item_quantity TEXT,
+       item_price TEXT,
+       discount_amount TEXT,
+       coupon_code TEXT,
+       coupon_amount TEXT,
+       ship_address_line1 TEXT,
+       ship_address_line2 TEXT,
+       ship_address_line3 TEXT,
+       ship_address_city TEXT,
+       ship_address_state TEXT,
+       ship_address_postal_code TEXT,
+       ship_address_country TEXT,
+       ship_phone_number TEXT,
+       ship_customer_name TEXT,
+       ship_customer_email_address TEXT,
+       ordering_session_id TEXT,
+       website_url TEXT
+   )
+   WITH (appendonly=true, compresstype=zlib) DISTRIBUTED RANDOMLY;
+   ```
+
+   上面的`CREATE TABLE`语句在`retail_demo` SCHEMA中创建一个名为`order_lineitems_hawq`的表。` order_lineitems_hawq`有几列。 `order_id`和`customer_id`提供了进入订单事实和客户维度表的键。 `order_lineitems_hawq`中的数据是随机分布的，并使用`zlib`压缩算法进行压缩。
+   `create_hawq_tables.sql`脚本还会创建`orders_hawq`事实表。
+
+4. 看一下`load_hawq_tables.sh`脚本：
+
+   ```shell
+   gpadmin@master$ vi load_hawq_tables.sh
+   ```
+
+   同样，请注意表名称的前缀`retail_demo.`是SCHEMA名称。
+   检查`psql -c COPY`命令：
+
+   ```shell
+   zcat $DATADIR/order_lineitems.tsv.gz | psql -d hawqgsdb -c "COPY retail_demo.order_lineitems_hawq FROM STDIN DELIMITER E'\t' NULL E'';"
+   zcat $DATADIR/orders.tsv.gz | psql -d hawqgsdb -c "COPY retail_demo.orders_hawq FROM STDIN DELIMITER E'\t' NULL E'';"
+   
+   ```
+
+   `load_hawq_tables.sh` Shell脚本使用zcat命令解压缩.tsv.gz数据文件。 SQL` COPY`命令将`STDIN`（即zcat命令的输出）复制到HAWQ表。 COPY命令还标识文件（选项）中使用的DELIMITER和NULL字符串（''）。
+
+5. 使用`load_hawq_tables.sh`脚本将Retail演示事实数据加载到新创建的表中。此过程可能需要一些时间才能完成。
+
+   ```shell
+   gpadmin@master$ ./load_hawq_tables.sh
+   ```
+
+6. 使用提供的脚本来验证是否成功加载了零售演示事实表：
+
+   ```shell
+   gpadmin@master$ ./verify_load_hawq_tables.sh
+   ```
+
+   `verify_load_hawq_tables.sh`脚本的输出应与以下内容匹配：
+
+   ```shell
+    Table Name                |    Count 
+   ------------------------------+------------------------
+ order_lineitems_hawq         |   744196
+    orders_hawq                  |   512071
+   ------------------------------+------------------------
+   ```
+   
+7. 在`order_lineitems_hawq`表上运行查询：
+
+   ```shell
+   gpadmin@master$ psql
+   hawqgsdb=# SELECT product_id, item_quantity, item_price, coupon_amount 
+                FROM retail_demo.order_lineitems_hawq 
+                WHERE order_id='8467975147' ORDER BY item_price;
+    product_id | item_quantity | item_price | coupon_amount 
+   ------------+---------------+------------+---------------
+    1611429    | 1             | 11.38      | 0.00000
+    1035114    | 1             | 12.95      | 0.15000
+    1382850    | 1             | 17.56      | 0.50000
+    1562908    | 1             | 18.50      | 0.00000
+    1248913    | 1             | 34.99      | 0.50000
+    741706     | 1             | 45.99      | 0.00000
+   (6 rows)
+   ```
+
+   `ORDER BY`子句根据item_price排序。如果未指定ORDER BY列，则按将行添加到表中的顺序返回行。
+
+8. 通过在`orders_hawq`表上运行以下查询，按订单收入确定前三个邮政编码：
+
+   ```sql
+   hawqgsdb=# SELECT billing_address_postal_code,
+                sum(total_paid_amount::float8) AS total,
+                sum(total_tax_amount::float8) AS tax
+              FROM retail_demo.orders_hawq
+                GROUP BY billing_address_postal_code
+                ORDER BY total DESC LIMIT 3;
+   ```
+
+   请注意，使用`sum()`聚合函数可将所有订单的订单总计（`total_amount_paid`）和税额总计（`total_tax_paid`）相加。这些总计将针对每个`billing_address_postal_code`进行分组/汇总。
+   将您的输出与以下内容进行比较：
+
+   ```sql
+    billing_address_postal_code |   total   |    tax    
+   ----------------------------+-----------+-----------
+    48001                       | 111868.32 | 6712.0992
+    15329                       | 107958.24 | 6477.4944
+    42714                       | 103244.58 | 6194.6748
+   (3 rows)
+   ```
+
+9. 在`orders_hawq`和`order_lineitems_hawq`表上运行以下查询，以显示所有标识`product_id`为`1869831`的订单项的`product_id，item_quantity`和`item_price`：
+
+   ```sql
+   hawqgsdb=# SELECT retail_demo.order_lineitems_hawq.order_id, product_id, item_quantity, item_price
+                FROM retail_demo.order_lineitems_hawq, retail_demo.orders_hawq
+              WHERE retail_demo.order_lineitems_hawq.order_id=retail_demo.orders_hawq.order_id AND retail_demo.order_lineitems_hawq.product_id=1869831
+                ORDER BY retail_demo.order_lineitems_hawq.order_id, product_id;
+     order_id  | product_id | item_quantity | item_price 
+   ------------+------------+---------------+------------
+    4831097728 | 1869831    | 1             | 11.87
+    6734073469 | 1869831    | 1             | 11.87
+   (2 rows)
+   ```
+
+10. 退出psql子系统：
+
+   ```shell
+   hawqgsdb=# \q
+   ```
+
+   
 
 ## 概括
 
-??
+在本课程中，您创建了零售订单和订单行数据并将其加载到HAWQ事实表中。您还查询了这些表，了解如何根据需要过滤数据。
+在第6课中，您将使用PXF外部表来类似地访问HDFS中存储的维度数据。
+
+
+
+--------
+
+# Lesson 6 - HAWQ Extension Framework (PXF)
+
+> In this topic:
+>
+> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxfprereq)
+> - [练习: 创建和查询PXF外部表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_excreatepxftblsteps)
+> - [练习: 查询HAWQ和PXF表](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_exhawqpxfquerysteps)
+> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/intropxfhdfs.html#tut_intropxf_summary)
+
+
+
+## 先决条件
+
+？？
+
+## 练习: 创建和查询PXF外部表
+
+？？ 
+
+## 练习: 查询HAWQ和PXF表
+
+？？ 
+
+## 概括
+
+？？
 
 
 
