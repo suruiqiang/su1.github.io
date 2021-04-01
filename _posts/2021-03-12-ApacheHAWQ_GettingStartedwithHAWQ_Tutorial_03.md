@@ -189,9 +189,8 @@ gpadmin@master$ hawq state
    如果您的部署包括Ambari服务器，请执行以下步骤以启动并查看HAWQ群集的当前状态。
 
    1. 在您喜欢的(受支持的)浏览器窗口中输入以下URL，以启动Ambari管理控制台：
-
-      ```
-   <ambari-server-node>:8080
+      ```shell
+      <ambari-server-node>:8080
       ```
    
    2. 登录与Ambari凭据（默认`admin`：`admin`）和查看仪表盘Ambari：
