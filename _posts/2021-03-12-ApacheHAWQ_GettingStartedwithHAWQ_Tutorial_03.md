@@ -951,11 +951,11 @@ HAWQ将数据本地写入HDFS或从HDFS读取数据。<br /> HAWQ表类似于任
 
 确保您具有：
 
-> [设置您的HAWQ运行时环境](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqenv.html#tut_runtime_setup)
-> [创建了HAWQ数据库教程](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)
-> [下载了零售数据和脚本文件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_exdownloadfilessteps)
-> [创建了零售演示HAWQ模式](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dsschema_ex)
-> 启动您的HAWQ集群。
+> [设置您的HAWQ运行时环境](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqenv.html#tut_runtime_setup)<br />
+> [创建了HAWQ数据库教程](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)<br />
+> [下载了零售数据和脚本文件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_exdownloadfilessteps)<br />
+> [创建了零售演示HAWQ模式](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dsschema_ex)<br />
+> 启动您的HAWQ集群。<br />
 
 
 
