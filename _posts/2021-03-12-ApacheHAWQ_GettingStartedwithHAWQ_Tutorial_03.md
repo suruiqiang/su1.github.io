@@ -440,7 +440,7 @@ HAWQ配置参数影响HAWQ群集和单个HAWQ节点的行为。
 
 > in this topic:
 >
-> - [前提条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_adminprereq)
+> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_adminprereq)
 > - [练习: 创建HAWQ教程数据库](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)
 > - [练习:使用psql进行表操作](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_usepsql)
 > - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_dbadmin_summary)
@@ -455,7 +455,7 @@ HAWQ gpadmin用户和被授予必要特权的其他用户可以执行SQL命令�
 
 
 
-## 前提条件
+## 先决条件
 
 确保[已设置HAWQ运行时环境_待定?](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqenv.html#tut_runtime_setup)，并且HAWQ群集已启动并正在运行。
 
