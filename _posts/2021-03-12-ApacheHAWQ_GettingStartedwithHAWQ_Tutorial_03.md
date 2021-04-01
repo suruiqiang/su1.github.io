@@ -8,11 +8,9 @@ keywords: ApacheHAWQ翻译
 
 > In this topic:
 >
-> i.[Overview](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html#tut_getstartov)
->
-> ii.[Prerequisites](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html#tut_getstartov_prereq)
->
-> iii.[Lessons](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html#tut_hawqexlist)
+> i.[Overview](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html#tut_getstartov)<br />
+> ii.[Prerequisites](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html#tut_getstartov_prereq)<br />
+> iii.[Lessons](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html#tut_hawqexlist)<br />
 
 # Overview
 
