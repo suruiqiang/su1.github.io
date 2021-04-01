@@ -45,11 +45,11 @@ keywords: ApacheHAWQ翻译
 # Lesson 1 - Runtime Environment
 > in this topic
 >
-> i.[先决条件](## 先决条件)
+> i.[先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqenv.html#tut_runtime_usercred)
 >
-> ii.[练习：设置您的HAWQ运行时环境](## 练习：设置您的HAWQ运行时环境)
+> ii.[练习: 设置您的HAWQ运行时环境](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqenv.html#tut_runtime_setup境)
 >
-> iii.[概括](## 概括)
+> iii.[概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqenv.html#tut_runtime_sumary)
 
 本节向您介绍HAWQ运行时环境。您将检查HAWQ安装，设置HAWQ环境并执行HAWQ管理命令。如果安装在您的环境中，您还将浏览Ambari管理控制台。
 
@@ -222,15 +222,15 @@ gpadmin@master$ hawq state
 
 > in this topic
 >
-> i.[Prerequisites](## Prerequisites)
+> i.[先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_adminprereq)
 >
-> ii.[Exercise: View and Update HAWQ Configuration from the Command Line](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_ex_cmdline_cfg)
+> ii.[练习：从命令行查看和更新HAWQ配置](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_ex_cmdline_cfg)
 >
-> iii.[Exercise: View the State of Your HAWQ Cluster via Ambari](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_ex_hawqstatecmdline)
+> iii.[练习：通过Ambari查看HAWQ群集的状态](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_ex_hawqstatecmdline)
 >
-> iv.[Exercise: View and Update HAWQ Configuration via Ambari](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_ex_ambari_cfg)
+> iv.[练习：通过Ambari查看和更新HAWQ配置](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_ex_ambari_cfg)
 >
-> v.[Summary](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_hawqadmin_summary)
+> v.[概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basichawqadmin.html#tut_hawqadmin_summary)
 
 
 
@@ -244,7 +244,7 @@ HAWQ配置参数影响HAWQ群集和单个HAWQ节点的行为。
 
 
 
-## Prerequisites
+## 先决条件
 
 确保已[设置HAWQ运行时环境](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/introhawqenv.html#tut_runtime_setup)，并且HAWQ群集已启动并正在运行。
 
@@ -440,10 +440,10 @@ HAWQ配置参数影响HAWQ群集和单个HAWQ节点的行为。
 
 > in this topic:
 >
-> - [Prerequisites](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_adminprereq)
-> - [Exercise: Create the HAWQ Tutorial Database](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)
-> - [Exercise: Use psql for Table Operations](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_usepsql)
-> - [Summary](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_dbadmin_summary)
+> - [前提条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_adminprereq)
+> - [练习: 创建HAWQ教程数据库](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_createdb)
+> - [练习:使用psql进行表操作](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_ex_usepsql)
+> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/basicdbadmin.html#tut_dbadmin_summary)
 
 
 
@@ -461,7 +461,7 @@ HAWQ gpadmin用户和被授予必要特权的其他用户可以执行SQL命令�
 
 
 
-## 练习：创建HAWQ教程数据库
+## 练习: 创建HAWQ教程数据库
 
 在本练习中，您将使用psql命令行实用程序来创建HAWQ数据库。
 
@@ -523,7 +523,7 @@ HAWQ gpadmin用户和被授予必要特权的其他用户可以执行SQL命令�
 
    
 
-## 练习：使用psql进行表操作
+## 练习: 使用psql进行表操作
 
 您可以通过psql实用程序（HAWQ数据库的交互式前端）来管理和访问HAWQ数据库和表。<br />在本练习中，您将使用psql创建简单的HAWQ表，向其中添加数据以及查询简单的HAWQ表。
 
@@ -616,9 +616,83 @@ HAWQ gpadmin用户和被授予必要特权的其他用户可以执行SQL命令�
 
 9. `psql`包含选项`-c`，可从shell命令行运行单个SQL命令。使用`-c <sql-command>`选项执行与在步骤7中运行的查询相同的查询：
 
-   
+   ```shell
+   gpadmin@master$ psql -d hawqgsdb -c 'SELECT i FROM first_tbl WHERE i>3'
+   ```
+
+10. 设置HAWQ `PGDATABASE`环境变量以标识`hawqsgdb`：
+
+    ```shell
+    gpadmin@master$ export PGDATABASE=hawqgsdb
+    ```
+
+    `$PGDATABASE`标识调用HAWQ `psql`命令时要连接的默认数据库。
+
+11. 再次从命令行重新运行查询，这次省略了`-d`选项：
+
+    ```shell
+    gpadmin@master$ psql -c 'SELECT i FROM first_tbl WHERE i>3'
+    ```
+
+    如果在命令行上未指定数据库，则psql尝试连接到`$PGDATABASE`标识的数据库。
+
+12. 将PGDATABASE设置添加到您的`.bash_profile`中：
+
+    ```shell
+    export PGDATABASE=hawqgsdb
+    ```
 
 
+
+## 概括
+
+您创建了将在以后的课程中使用的数据库。您还使用psql创建了简单的HAWQ表，将数据插入其中，并查询了该表。
+
+
+
+有关HAWQ中SQL命令支持的信息，请参考[SQL命令_待定?](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/reference/SQLCommandReference.html)参考。
+
+
+
+有关psql子系统的详细信息，请参考[psql_待定?](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/reference/cli/client_utilities/psql.html)参考页。下表列出了常用的psql元命令。
+
+| Action                          | Command            |
+| :------------------------------ | :----------------- |
+| List databases                  | `\l`               |
+| List tables in current database | `\dt`              |
+| Describe a specific table       | `\d <table-name>`  |
+| Execute an SQL script           | `\i <script-name>` |
+| Quit/Exit                       | `\q`               |
+
+第4课介绍了零售演示，这是在以后的课程中使用的更复杂的数据集。您将下载并检查数据集和工作文件。您还将把某些数据集加载到HDFS中。
+
+-------
+
+# Lesson 4 - Sample Data Set and HAWQ Schemas
+
+> in this topic:
+>
+> - [先决条件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dataset_prereq)
+> - [练习：下载零售演示数据和脚本文件](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_exdownloadfilessteps)
+> - [练习：创建零售演示HAWQ模式](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dsschema_ex)
+> - [练习：将维度数据加载到HDFSS](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_loadhdfs_ex)
+> - [概括](http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/gettingstarted/dataandscripts.html#tut_dataset_summary)
+
+
+
+## 先决条件
+
+
+
+## 练习：下载零售演示数据和脚本文件
+
+
+
+## 练习：创建零售演示HAWQ模式
+
+
+
+## 练习：将维度数据加载到HDFS
 
 http://hawq.apache.org/docs/userguide/2.3.0.0-incubating/tutorial/overview.html
 
