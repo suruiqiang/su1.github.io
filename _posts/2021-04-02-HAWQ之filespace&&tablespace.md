@@ -41,7 +41,7 @@ dfs_url::nn
 ```
 ># su - hdfs
 >$ hdfs dfs -mkdir hdfs://nn/oushu_fpc
->$ hdfs dfs -chown gpadmin:gpadmin hdfs://nn/oushu_fpc
+>$ hdfs dfs -chown gpadmin:hadoop hdfs://nn/oushu_fpc
 >$ hdfs dfs -ls hdfs://nn/
 Found 5 items
 ...
