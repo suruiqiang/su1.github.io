@@ -48,7 +48,7 @@ Found 5 items
 drwxr-xr-x   - gpadmin gpadmin             0 2019-06-22 09:34 hdfs://nn/oushu_fpc
 >$ 
 ```
-## 创建filespac
+## 创建filespace
 ```
 >$ hawqfilespace --config /home/gpadmin/oushu_fpc
 Reading Configuration file: '/home/gpadmin/oushu_fpc'
