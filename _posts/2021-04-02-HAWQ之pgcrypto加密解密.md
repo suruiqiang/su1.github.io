@@ -6,7 +6,7 @@ description: HAWQ之pgcrypto加密解密
 keywords: HAWQ
 ---
 
-[toc]
+
 
 # 参考
 
