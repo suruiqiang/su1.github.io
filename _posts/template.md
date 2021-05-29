@@ -7,3 +7,6 @@ keywords: keyword1, keyword2
 ---
 
 Content here
+
+---
+![cn](/images/blog/cn.png)
